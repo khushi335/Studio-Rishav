@@ -1,0 +1,80 @@
+/* ==========================================================================
+   STUDIO RISHAV — COMPREHENSIVE PERFORMANCE INTERACTIVE OVERRIDES
+   Core Focus: Total Mobile Adaptability & High Contrast Clean Outlines
+   ========================================================================== */
+
+/* 1. Base Element Layout Standards */
+html, body {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. Premium Luxury Typography Engine */
+.heading-premium {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+}
+
+/* 3. Global Text Selections (High-End Contrast) */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+::-webkit-scrollbar-thumb {
+    background: #121212;
+    border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #F5F5F5;
+}
+
+/* 4. Interactive Micro-Engagements (No Gradients) */
+.group:hover img {
+    filter: grayscale(0%) !important;
+    transform: scale(1.02);
+}
+
+img {
+    transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* 5. Fluid Structural Elements & Responsive Adaptations */
+@media (max-width: 640px) {
+    .heading-premium {
+        letter-spacing: 0.01em !important;
+    }
+    section {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+}
+
+/* Hardware Acceleration Layer for Smooth Frame Loading */
+.animate-fade-in {
+    opacity: 0;
+    animation: luxuryFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes luxuryFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
