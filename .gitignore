@@ -1,0 +1,10 @@
+# Sensitive Environment Rules
+.env
+
+# Compiled Python bytecode
+*.pyc
+__pycache__/
+
+# Local development cache / media uploads
+db.sqlite3
+/media/
