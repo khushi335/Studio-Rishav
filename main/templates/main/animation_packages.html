@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Animation & Motion Packages — Studio Rishav{% endblock %}
+{% block meta_description %}Simple animation packages for moving logos, animated titles, 2D/3D graphics, and social media videos.{% endblock %}
+
+{% block extra_head %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+<style>
+    :root {
+        --bg-pure: #000000;
+        --bg-surface: #0A0A0A;
+        --bg-card: #121212;
+        --bg-card-hover: #181818;
+        --border-hairline: #1F1F1F;
+        --border-focus: #333333;
+        --text-bright: #FFFFFF;
+        --text-subtle: #8E8E93;
+        --text-muted: #555555;
+        --font-serif: 'Cormorant Garamond', Georgia, serif;
+        --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    }
+
+    .sr-wrapper {
+        background-color: var(--bg-pure);
+        color: var(--text-bright);
+        font-family: var(--font-sans);
+        min-height: 100vh;
+        padding: 50px 24px;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .sr-container { max-width: 1320px; margin: 0 auto; }
+    .sr-nav-back { margin-bottom: 28px; }
+
+    .sr-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-subtle);
+        text-decoration: none;
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-weight: 500;
+        padding: 8px 16px 8px 12px;
+        border: 1px solid var(--border-hairline);
+        background-color: rgba(255, 255, 255, 0.02);
+        transition: all 0.3s ease;
+    }
+
+    .sr-back-btn:hover { color: var(--text-bright); border-color: var(--border-focus); background-color: var(--bg-card); }
+    .sr-back-btn svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 1.75; }
+
+    .sr-hero { text-align: center; max-width: 700px; margin: 0 auto 44px auto; }
+    .sr-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; display: inline-block; }
+    .sr-title { font-family: var(--font-serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; margin: 0 0 14px 0; }
+    .sr-subtitle { font-size: 14px; line-height: 1.6; color: var(--text-subtle); font-weight: 300; }
+    .sr-divider { width: 32px; height: 1px; background-color: var(--border-focus); margin: 24px auto 0 auto; }
+
+    .sr-pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 56px; }
+    .sr-card { background-color: var(--bg-card); border: 1px solid var(--border-hairline); padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: all 0.3s ease; }
+    .sr-card:hover { border-color: var(--border-focus); background-color: var(--bg-card-hover); transform: translateY(-3px); }
+    .sr-card.featured { border-color: var(--text-bright); background-color: var(--bg-surface); }
+    .sr-badge { position: absolute; top: 0; right: 28px; background-color: var(--text-bright); color: var(--bg-pure); font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 8px; }
+    .sr-card-num { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 12px; display: block; }
+    .sr-card-title { font-family: var(--font-serif); font-size: 30px; font-weight: 300; margin: 0 0 6px 0; }
+    .sr-card-tagline { font-size: 13px; color: var(--text-subtle); line-height: 1.5; margin-bottom: 20px; font-weight: 300; }
+    .sr-price-box { display: flex; align-items: baseline; gap: 8px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-hairline); }
+    .sr-price { font-family: var(--font-serif); font-size: 38px; font-weight: 300; }
+    .sr-price-sub { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    .sr-feature-list { list-style: none; padding: 0; margin: 0 0 28px 0; flex-grow: 1; }
+    .sr-feature-item { font-size: 13px; color: var(--text-subtle); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.4; }
+    .sr-bullet { width: 4px; height: 4px; background-color: var(--text-bright); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .sr-card:not(.featured) .sr-bullet { background-color: var(--text-muted); }
+
+    .sr-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 16px; background-color: transparent; border: 1px solid var(--border-hairline); color: var(--text-bright); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; box-sizing: border-box; transition: all 0.3s ease; }
+    .sr-btn svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .sr-btn:hover { background-color: var(--text-bright); color: var(--bg-pure); }
+    .sr-card.featured .sr-btn { background-color: var(--text-bright); color: var(--bg-pure); }
+
+    .sr-specs { border-top: 1px solid var(--border-hairline); padding-top: 40px; display: grid; grid-template-columns: 1fr 2.5fr; gap: 32px; }
+    .sr-specs-title { font-family: var(--font-serif); font-size: 28px; font-weight: 300; margin: 0 0 8px 0; }
+    .sr-specs-desc { font-size: 13px; color: var(--text-subtle); line-height: 1.5; margin: 0; }
+    .sr-specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .sr-spec-item-title { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; margin: 0 0 6px 0; text-transform: uppercase; }
+    .sr-spec-item-desc { font-size: 12px; color: var(--text-subtle); line-height: 1.5; margin: 0; }
+
+    .sr-cta { margin-top: 48px; background-color: var(--bg-surface); border: 1px solid var(--border-hairline); padding: 40px 24px; text-align: center; }
+    .sr-cta-title { font-family: var(--font-serif); font-size: clamp(26px, 3vw, 36px); font-weight: 300; margin: 0 0 8px 0; }
+    .sr-cta-sub { font-size: 13px; color: var(--text-subtle); max-width: 480px; margin: 0 auto 20px auto; line-height: 1.5; }
+    .sr-cta-btn { display: inline-block; background-color: var(--text-bright); color: var(--bg-pure); padding: 14px 28px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+
+    @media (max-width: 900px) { .sr-specs { grid-template-columns: 1fr; gap: 24px; } }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="sr-wrapper">
+    <div class="sr-container">
+
+        <!-- Back Button -->
+        <nav class="sr-nav-back">
+            <a href="{% url 'services' %}" class="sr-back-btn">
+                <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <span>Back to All Services</span>
+            </a>
+        </nav>
+
+        <!-- Header -->
+        <header class="sr-hero">
+            <span class="sr-tag">05 / Service</span>
+            <h1 class="sr-title">Animation Packages</h1>
+            <p class="sr-subtitle">
+                Clear and engaging 2D/3D animations, animated logo reveals, title cards, and moving graphics for your videos.
+            </p>
+            <div class="sr-divider"></div>
+        </header>
+
+        <!-- Package Grid -->
+        <section class="sr-pricing-grid">
+            {% for package in packages %}
+            <article class="sr-card {% if package.badge %}featured{% endif %}">
+                {% if package.badge %}
+                    <span class="sr-badge">{{ package.badge }}</span>
+                {% endif %}
+
+                <div>
+                    <span class="sr-card-num">OPTION 0{{ forloop.counter }}</span>
+                    <h2 class="sr-card-title">{{ package.name }}</h2>
+                    <p class="sr-card-tagline">{{ package.tagline }}</p>
+
+                    <div class="sr-price-box">
+                        <span class="sr-price">{{ package.price }}</span>
+                        <span class="sr-price-sub">/ Starting Price</span>
+                    </div>
+
+                    <ul class="sr-feature-list">
+                        {% for feature in package.features %}
+                        <li class="sr-feature-item">
+                            <span class="sr-bullet"></span>
+                            <span>{{ feature }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <a href="{% url 'contact' %}?package={{ package.id }}" class="sr-btn">
+                    <span>Book Package</span>
+                    <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </article>
+            {% endfor %}
+        </section>
+
+        <!-- Process Section -->
+        <section class="sr-specs">
+            <div>
+                <h2 class="sr-specs-title">Animation Process</h2>
+                <p class="sr-specs-desc">How we bring static graphics to life smoothly step by step.</p>
+            </div>
+
+            <div class="sr-specs-grid">
+                <div>
+                    <h3 class="sr-spec-item-title">1. Storyboard</h3>
+                    <p class="sr-spec-item-desc">We sketch simple frame ideas so you see the movement plan early.</p>
+                </div>
+                <div>
+                    <h3 class="sr-spec-item-title">2. Style &amp; Assets</h3>
+                    <p class="sr-spec-item-desc">We draw the shapes, text, and characters before animating them.</p>
+                </div>
+                <div>
+                    <h3 class="sr-spec-item-title">3. Motion &amp; Timing</h3>
+                    <p class="sr-spec-item-desc">We add smooth motion, transitions, and sound effects to match the video rhythm.</p>
+                </div>
+                <div>
+                    <h3 class="sr-spec-item-title">4. HD Delivery</h3>
+                    <p class="sr-spec-item-desc">Exported in high quality with transparent background options (MOV, MP4, GIF).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Box -->
+        <section class="sr-cta">
+            <h2 class="sr-cta-title">Need a Custom 3D or Long Animation?</h2>
+            <p class="sr-cta-sub">
+                If you need explainer videos, full 3D product animations, or custom visual effects, send us a message.
+            </p>
+            <a href="{% url 'contact' %}?service=custom-animation" class="sr-cta-btn">Get in Touch</a>
+        </section>
+
+    </div>
+</main>
+{% endblock %}

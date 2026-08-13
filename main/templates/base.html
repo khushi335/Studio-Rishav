@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{% block title %}Studio Rishav | Premium Creative Production & Entertainment Studio{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Studio Rishav is a luxury creative house delivering high-end photography, cinematic films, editorial editing, branding, animation, and premium DJ entertainment.{% endblock %}">
+    <meta name="keywords" content="Studio Rishav, Foto Rishav, luxury wedding cinema, premium photography, video editing, branding agency, motion graphics, celebrity DJ entertainment, Sydney creative production">
+    <meta name="author" content="Studio Rishav">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="Studio Rishav | Creating Stories Beyond Frames">
+    <meta property="og:description" content="Premium visual storytelling, luxury photography, cinematic films, and elite DJ services.">
+    <meta property="og:image" content="{% static 'images/logo_rishav_studio.png' %}">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+    <meta property="twitter:title" content="Studio Rishav | Creating Stories Beyond Frames">
+    <meta property="twitter:description" content="Premium visual storytelling, luxury photography, cinematic films, and elite DJ services.">
+    <meta property="twitter:image" content="{% static 'images/logo_rishav_studio.png' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .heading-premium {
+            font-family: 'Cormorant Garamond', serif !important;
+            letter-spacing: -0.01em;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222222;
+            border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFFFFF;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Studio Rishav",
+      "image": "{% static 'images/rishav_studio_logo.jpeg' %}",
+      "url": "https://studiorishav.com",
+      "telephone": "+61452320935",
+      "email": "foto.rishav@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "87 Frederick Street",
+        "postalCode": "2131",
+        "addressLocality": "NSW",
+        "addressCountry": "AU"
+      },
+      "sameAs": [
+        "https://www.facebook.com/share/18iTvKzQsv/?mibextid=wwXIfr",
+        "https://www.instagram.com/fotorishav",
+        "https://www.tiktok.com/@fotorishav",
+        "https://twitter.com/fotorishav"
+      ],
+      "priceRange": "$$$$"
+    }
+    </script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="flex flex-col min-h-screen selection:bg-white selection:text-black antialiased bg-black text-white">
+
+    <div class="w-full bg-[#0D0D0D] border-b border-[#1F1F1F] text-[11px] tracking-[0.2em] uppercase py-3.5 px-6 sm:px-12 flex flex-col sm:flex-row justify-between items-center gap-3 text-gray-300">
+        <div class="flex items-center gap-4">
+            <a href="tel:+61452320935" class="hover:text-white font-medium transition-colors duration-300">+61 452 320 935</a>
+            <span class="text-[#333333]">|</span>
+            <a href="mailto:foto.rishav@gmail.com" class="hover:text-white transition-colors duration-300 lowercase tracking-normal font-medium">foto.rishav@gmail.com</a>
+        </div>
+        <div class="hidden md:block font-normal text-gray-200 tracking-[0.25em] text-[10px]">
+            Creating Stories Beyond Frames
+        </div>
+        <div class="text-right tracking-widest font-medium text-[10px] text-gray-400">
+            Sydney, NSW Australia
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-[#1F1F1F] transition-all duration-300">
+        <div class="max-w-[1600px] mx-auto px-6 sm:px-12 h-24 flex justify-between items-center">
+            
+            <a href="{% url 'index' %}" class="flex items-center gap-4 group">
+                <img src="{% static 'images/logo_rishav_studio.png' %}" alt="Studio Rishav Logo" class="h-12 w-auto object-contain brightness-100 group-hover:opacity-90 transition-opacity duration-300">
+                <div class="flex flex-col border-l border-[#2A2A2A] pl-4">
+                    <span class="heading-premium text-xl sm:text-2xl font-light tracking-[0.15em] uppercase text-white leading-none">Studio Rishav</span>
+                    <span class="text-[8px] tracking-[0.45em] uppercase text-gray-400 mt-1 pl-0.5 group-hover:text-white transition-colors duration-500">Creative House</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 xl:gap-10 text-[12px] tracking-[0.25em] uppercase font-medium text-gray-300">
+                <a href="{% url 'index' %}" class="hover:text-white transition-colors duration-300 {% if request.path == '/' %}text-white border-b border-white pb-1{% endif %}">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-white transition-colors duration-300 {% if '/about/' in request.path %}text-white border-b border-white pb-1{% endif %}">About</a>
+                <a href="{% url 'portfolio' %}" class="hover:text-white transition-colors duration-300 {% if '/portfolio/' in request.path %}text-white border-b border-white pb-1{% endif %}">Portfolio</a>
+                <a href="{% url 'services' %}" class="hover:text-white transition-colors duration-300 {% if '/services/' in request.path %}text-white border-b border-white pb-1{% endif %}">Services</a>
+                <a href="{% url 'photography' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Photography</a>
+                <a href="{% url 'blog_list' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Journal</a>
+                <!--<a href="{% url 'contact' %}" class="hover:text-white transition-colors duration-300 {% if '/contact/' in request.path %}text-white border-b border-white pb-1{% endif %}">Contact</a>-->
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="{% url 'contact' %}" class="text-[11px] uppercase tracking-[0.2em] border border-white px-7 py-3 bg-white text-black hover:bg-transparent hover:text-white transition-all duration-500 font-semibold">
+                    Book Consultation
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="lg:hidden flex flex-col justify-center items-end w-8 h-8 gap-1.5 focus:outline-none group" aria-label="Toggle Navigation Menu">
+                <span id="line1" class="w-8 h-[1.5px] bg-white transition-all duration-300"></span>
+                <span id="line2" class="w-6 h-[1.5px] bg-white transition-all duration-300"></span>
+                <span id="line3" class="w-7 h-[1.5px] bg-white transition-all duration-300"></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden fixed inset-x-0 top-[153px] bottom-0 bg-black z-40 flex flex-col px-8 py-12 justify-between border-t border-[#1F1F1F] overflow-y-auto animate-fade-in">
+            <nav class="flex flex-col gap-8 text-3xl font-light tracking-widest heading-premium">
+                <a href="{% url 'index' %}" class="text-white hover:translate-x-2 transition-transform duration-300">Home</a>
+                <a href="{% url 'about' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">About</a>
+                <a href="{% url 'portfolio' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Portfolio</a>
+                <a href="{% url 'services' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Services</a>
+                <a href="{% url 'photography' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Photography</a>
+                <a href="{% url 'blog_list' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Journal</a>
+                <a href="{% url 'contact' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Contact</a>
+            </nav>
+            <div class="flex flex-col gap-5 border-t border-[#1F1F1F] pt-8">
+                <a href="tel:+61452320935" class="text-sm tracking-widest uppercase text-gray-200 font-medium">+61 452 320 935</a>
+                <a href="{% url 'contact' %}" class="text-center text-xs uppercase bg-white text-black py-4 font-bold tracking-[0.25em]">
+                    Book Consultation
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full overflow-x-hidden">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-[#0D0D0D] border-t border-[#1F1F1F] pt-16 sm:pt-20 pb-12 text-gray-300 font-normal text-sm antialiased selection:bg-white selection:text-black">
+    <div class="max-w-[1600px] mx-auto px-6 sm:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+        
+        <!-- Column 1: Brand & Contact Info -->
+        <div class="space-y-6">
+            <div class="flex items-center gap-3">
+                <img src="{% static 'images/logo_rishav_studio.png' %}" 
+                     alt="Studio Rishav Logo" 
+                     class="h-10 w-auto object-contain bg-[#0D0D0D] transition-opacity duration-300">
+                <h2 class="heading-premium text-2xl font-light tracking-[0.1em] text-white uppercase">Studio Rishav</h2>
+            </div>
+            
+            <p class="text-[12px] tracking-widest text-gray-400 max-w-xs leading-relaxed uppercase">
+                A multi-disciplinary luxury production agency crafting high-end cinematic visuals and curation.
+            </p>
+
+            <div class="text-xs tracking-widest text-gray-300 space-y-2 pt-2 border-t border-[#1F1F1F]">
+                <p class="text-gray-400">87 Frederick Street, 2131, NSW</p>
+                <div class="flex flex-col gap-1.5 pt-1">
+                    <a href="tel:+61452320935" class="hover:text-white transition-colors duration-300 font-medium">+61 452 320 935</a>
+                    <a href="mailto:foto.rishav@gmail.com" class="hover:text-white transition-colors duration-300 lowercase text-gray-400">foto.rishav@gmail.com</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2: Navigation Directory -->
+        <div class="space-y-4">
+            <p class="text-xs tracking-[0.2em] uppercase font-bold text-white border-b border-[#2A2A2A] pb-2">Navigation</p>
+            <ul class="space-y-3 text-xs tracking-widest uppercase text-gray-400 font-medium">
+                <li><a href="{% url 'index' %}" class="hover:text-white transition-colors duration-300">Home</a></li>
+                <li><a href="{% url 'about' %}" class="hover:text-white transition-colors duration-300">About</a></li>
+                <li><a href="{% url 'portfolio' %}" class="hover:text-white transition-colors duration-300">Portfolio</a></li>
+                <li><a href="{% url 'services' %}" class="hover:text-white transition-colors duration-300">Services</a></li>
+                <li><a href="{% url 'photography' %}" class="hover:text-white transition-colors duration-300">Photography</a></li>
+                <li><a href="{% url 'blog_list' %}" class="hover:text-white transition-colors duration-300">Journal</a></li>
+                <li><a href="{% url 'contact' %}" class="hover:text-white transition-colors duration-300">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 3: Complete Services & Packages -->
+        <div class="space-y-4">
+            <p class="text-xs tracking-[0.2em] uppercase font-bold text-white border-b border-[#2A2A2A] pb-2">Packages</p>
+            <ul class="space-y-2.5 text-xs tracking-widest uppercase text-gray-400 font-medium">
+                <li><a href="{% url 'photography_packages' %}" class="hover:text-white transition-colors duration-300"> Photography Packages</a></li>
+                <li><a href="{% url 'videography_packages' %}" class="hover:text-white transition-colors duration-300"> Videography Packages</a></li>
+                <li><a href="{% url 'editing_packages' %}" class="hover:text-white transition-colors duration-300"> Editing & Retouching</a></li>
+                <li><a href="{% url 'design_packages' %}" class="hover:text-white transition-colors duration-300"> Graphic Design & Branding</a></li>
+                <li><a href="{% url 'animation_packages' %}" class="hover:text-white transition-colors duration-300"> Animation Packages</a></li>
+                <li><a href="{% url 'social_content_packages' %}" class="hover:text-white transition-colors duration-300"> Social Media Content</a></li>
+                <li><a href="{% url 'dj_packages' %}" class="hover:text-white transition-colors duration-300"> DJ & Event Entertainment</a></li>
+                <li><a href="{% url 'custom_quote' %}" class="hover:text-white transition-colors duration-300"> Custom Quote Option</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 4: Social Channels (SVG Icons) -->
+        <div class="space-y-4">
+            <p class="text-xs tracking-[0.2em] uppercase font-bold text-white border-b border-[#2A2A2A] pb-2">Connect Channels</p>
+            <p class="text-[11px] tracking-wider text-gray-400 uppercase">Follow our visual journal across social platforms.</p>
+            
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/61452320935" target="_blank" rel="noopener" aria-label="WhatsApp"
+                   class="w-10 h-10 rounded-full border border-[#2A2A2A] bg-black flex items-center justify-center text-gray-400 hover:text-white hover:border-white hover:scale-105 transition-all duration-300 group">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/fotorishav" target="_blank" rel="noopener" aria-label="Instagram"
+                   class="w-10 h-10 rounded-full border border-[#2A2A2A] bg-black flex items-center justify-center text-gray-400 hover:text-white hover:border-white hover:scale-105 transition-all duration-300 group">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/share/18iTvKzQsv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"
+                   class="w-10 h-10 rounded-full border border-[#2A2A2A] bg-black flex items-center justify-center text-gray-400 hover:text-white hover:border-white hover:scale-105 transition-all duration-300 group">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@fotorishav" target="_blank" rel="noopener" aria-label="TikTok"
+                   class="w-10 h-10 rounded-full border border-[#2A2A2A] bg-black flex items-center justify-center text-gray-400 hover:text-white hover:border-white hover:scale-105 transition-all duration-300 group">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                </a>
+
+                <!-- Twitter / X -->
+                <a href="https://twitter.com/fotorishav" target="_blank" rel="noopener" aria-label="Twitter X"
+                   class="w-10 h-10 rounded-full border border-[#2A2A2A] bg-black flex items-center justify-center text-gray-400 hover:text-white hover:border-white hover:scale-105 transition-all duration-300 group">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+
+                <!-- Snapchat -->
+                <a href="https://www.snapchat.com/add/fotorishav" target="_blank" rel="noopener" aria-label="Snapchat"
+                   class="w-10 h-10 rounded-full border border-[#2A2A2A] bg-black flex items-center justify-center text-gray-400 hover:text-white hover:border-white hover:scale-105 transition-all duration-300 group">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.051 1.5c-3.921 0-6.195 2.802-6.195 5.253 0 1.281.562 2.378 1.185 3.097.168.195.219.345.105.585-.105.21-.405.825-.54 1.11-.075.15-.225.225-.375.195-.495-.105-1.5-.33-2.19-.105-.345.105-.585.39-.555.75.045.54.675.945 1.5.945.33 0 .705-.075 1.095-.21.21-.075.36 0 .435.18.21.51.645.99 1.485.99.315 0 .615-.075.915-.225.18-.09.345-.045.45.12.39.63 1.14 1.035 2.19 1.035 1.05 0 1.8-.405 2.19-1.035.105-.165.27-.21.45-.12.3.15.6.225.915.225.84 0 1.275-.48 1.485-.99.075-.18.225-.255.435-.18.39.135.765.21 1.095.21.825 0 1.455-.405 1.5-.945.03-.36-.21-.645-.555-.75-.69-.225-1.695 0-2.19.105-.15.03-.3-.045-.375-.195-.135-.285-.435-.9-.54-1.11-.114-.24-.063-.39.105-.585.623-.719 1.185-1.816 1.185-3.097 0-2.451-2.274-5.253-6.195-5.253z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Copyright & Legal Links -->
+    <div class="max-w-[1600px] mx-auto px-6 sm:px-12 pt-8 border-t border-[#1F1F1F] flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] tracking-[0.2em] uppercase text-gray-400">
+        <div>
+            &copy; 2026 Studio Rishav. All Rights Reserved.
+        </div>
+        <div class="flex gap-6 font-medium">
+            <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors duration-300">Terms of Curation</a>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const l1 = document.getElementById('line1');
+        const l2 = document.getElementById('line2');
+        const l3 = document.getElementById('line3');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+            
+            l1.classList.toggle('rotate-45');
+            l1.classList.toggle('translate-y-[7.5px]');
+            l2.classList.toggle('opacity-0');
+            l3.classList.toggle('-rotate-45');
+            l3.classList.toggle('-translate-y-[7.5px]');
+            l3.classList.toggle('w-8');
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

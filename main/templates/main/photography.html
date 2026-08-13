@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Photography Disciplines | Studio Rishav{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/photography.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="photography-page bg-[#0D0D0D] text-white selection:bg-white selection:text-black">
+    
+    <!-- Hero Section -->
+    <header class="photo-hero pt-32 pb-20 px-6 sm:px-12 max-w-[1600px] mx-auto border-b border-[#1F1F1F]">
+        <div class="max-w-4xl">
+            <span class="text-xs tracking-[0.3em] uppercase text-[#B89865] font-semibold mb-4 block">01 / The Visual Archive</span>
+            <h1 class="text-4xl md:text-6xl font-light tracking-[0.1em] uppercase leading-tight mb-6">
+                Photography <br>
+                <span class="text-gray-500">Disciplines</span>
+            </h1>
+            <p class="text-sm md:text-base tracking-widest text-gray-400 max-w-2xl leading-relaxed uppercase font-light">
+                A curated exploration of our visual storytelling across diverse domains. From high-fashion editorial to cinematic event capture, meticulously crafted for modern luxury.
+            </p>
+        </div>
+    </header>
+
+    <!-- Dynamic Category Grid -->
+    <section class="photo-categories px-6 sm:px-12 py-16 max-w-[1600px] mx-auto">
+        
+        <!-- 
+          ASSUMPTION: Your view passes a variable named 'categories' 
+          containing categories like Food, Portraits, Weddings, etc.
+        -->
+        {% for category in categories %}
+            <article class="category-block mb-24 last:mb-0" id="{{ category.slug }}">
+                
+                <!-- Category Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-[#1F1F1F] pb-4">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-light tracking-[0.15em] uppercase text-white">
+                            {{ category.title }}
+                        </h2>
+                        {% if category.description %}
+                            <p class="text-xs tracking-widest text-gray-400 uppercase mt-3 max-w-xl">
+                                {{ category.description }}
+                            </p>
+                        {% endif %}
+                    </div>
+                    <div class="text-xs tracking-[0.2em] text-[#B89865] uppercase shrink-0">
+                        Vol — {{ forloop.counter|stringformat:"02d" }}
+                    </div>
+                </div>
+
+                <!-- Bento Box Image Grid (Displays up to 5 images) -->
+                <div class="bento-grid">
+                    <!-- Slicing the queryset to strictly 5 images as requested -->
+                    {% for image in category.images.all|slice:":5" %}
+                        <div class="bento-item reveal-on-scroll">
+                            <img src="{{ image.image.url }}" 
+                                 alt="{{ category.title }} - Image {{ forloop.counter }}" 
+                                 loading="lazy"
+                                 class="w-full h-full object-cover">
+                            
+                            <!-- Subtle Overlay on Hover -->
+                            <div class="item-overlay">
+                                <span class="overlay-text">{{ category.title }} // {{ forloop.counter|stringformat:"02d" }}</span>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="text-xs tracking-widest text-gray-500 uppercase py-8">Curating gallery...</p>
+                    {% endfor %}
+                </div>
+                
+            </article>
+        {% endfor %}
+
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Simple Intersection Observer for scroll reveal animations
+    document.addEventListener("DOMContentLoaded", function() {
+        const reveals = document.querySelectorAll(".reveal-on-scroll");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add("revealed");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        reveals.forEach(reveal => observer.observe(reveal));
+    });
+</script>
+{% endblock %}

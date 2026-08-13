@@ -1,0 +1,664 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Studio Journal — Cinema, Photography & Event Stories | Studio Rishav{% endblock %}
+{% block meta_description %}Insights on luxury cinematography, editorial portraiture, weddings, milestone celebrations, and brand architecture by Studio Rishav.{% endblock %}
+
+{% block extra_head %}
+<!-- Performance Resource Hints -->
+<link rel="preconnect" href="https://schema.org" crossorigin>
+<link rel="preload" as="image" href="{% static 'images/hero_blog.jpg' %}">
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+<!-- Google SEO Schema Structured Data Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Studio Rishav Journal",
+  "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
+  "description": "Insights on luxury cinematography, editorial photography, creative brand design, and modern content creation architecture.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Studio Rishav",
+    "url": "https://studiorishav.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://studiorishav.com/static/images/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "CollectionPage",
+    "@id": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
+  }
+}
+</script>
+
+<style>
+    /* ==========================================================================
+       HIGH-PERFORMANCE EDITORIAL JOURNAL ARCHIVE STYLES
+       ========================================================================== */
+    :root {
+        --bg-primary: #050505;
+        --bg-card: #0A0A0C;
+        --border-subtle: #1C1C21;
+        --border-hover: #3F3F46;
+        --text-primary: #FFFFFF;
+        --text-secondary: #A1A1AA;
+        --text-muted: #71717A;
+    }
+
+    /* Layout & Base Containment */
+    .journal-archive-wrapper {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+        padding: 120px 24px 100px 24px;
+        box-sizing: border-box;
+        contain: content;
+    }
+
+    /* Header Block */
+    .journal-header-block {
+        max-width: 1280px;
+        margin: 0 auto 72px auto;
+        text-align: center;
+    }
+
+    .journal-archive-tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+    }
+
+    .journal-main-headline {
+        font-family: 'Times New Roman', Times, Didot, Georgia, serif;
+        font-size: clamp(34px, 5.5vw, 64px);
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        margin: 0 auto 28px auto;
+        max-width: 960px;
+        line-height: 1.12;
+        color: var(--text-primary);
+    }
+
+    .journal-divider-line {
+        width: 40px;
+        height: 1px;
+        background-color: var(--border-hover);
+        margin: 0 auto 40px auto;
+    }
+
+    /* Hardware-Accelerated Touch Scrolling Filter Bar */
+    .journal-nav-filter-container {
+        width: 100%;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .journal-nav-filter-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .journal-nav-filter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: max-content;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    .journal-filter-btn {
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        padding: 10px 18px;
+        border: 1px solid var(--border-subtle);
+        color: var(--text-secondary);
+        text-decoration: none;
+        background-color: var(--bg-card);
+        white-space: nowrap;
+        border-radius: 2px;
+        transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+        will-change: border-color, background-color;
+    }
+
+    .journal-filter-btn:hover,
+    .journal-filter-btn.active {
+        border-color: var(--text-primary);
+        background-color: var(--text-primary);
+        color: #000000;
+    }
+
+    .journal-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    /* FEATURED HERO ARTICLE */
+    .featured-article {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        padding: 24px;
+        margin-bottom: 64px;
+        border-radius: 4px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        will-change: border-color;
+    }
+
+    .featured-article:hover {
+        border-color: var(--border-hover);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .featured-image-frame {
+        overflow: hidden;
+        background-color: #000;
+        aspect-ratio: 16/9;
+        border: 1px solid var(--border-subtle);
+        border-radius: 2px;
+        transform: translateZ(0); /* Force GPU Layer */
+    }
+
+    .featured-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+
+    .featured-tag {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: #71717A;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .featured-title {
+        font-family: 'Times New Roman', Times, Didot, Georgia, serif;
+        font-size: clamp(26px, 3vw, 38px);
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 0 0 16px 0;
+    }
+
+    .featured-title a {
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .featured-title a:hover {
+        color: var(--text-secondary);
+    }
+
+    .featured-excerpt {
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        font-weight: 300;
+        margin: 0 0 28px 0;
+    }
+
+    /* HIGH-PERFORMANCE GRID ARCHIVE LAYOUT */
+    .journal-grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 40px 32px;
+    }
+
+    .journal-card {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        padding: 20px;
+        border-radius: 4px;
+        /* Content-visibility skips rendering offscreen items until scrolled into view */
+        content-visibility: auto;
+        contain-intrinsic-size: 0 480px;
+        transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform;
+    }
+
+    .journal-card:hover {
+        border-color: var(--border-hover);
+        transform: translateY(-6px);
+    }
+
+    .journal-image-frame {
+        overflow: hidden;
+        background-color: #000;
+        aspect-ratio: 3/2;
+        margin-bottom: 24px;
+        border: 1px solid var(--border-subtle);
+        border-radius: 2px;
+        position: relative;
+        transform: translateZ(0); /* Hardware accelerated clipping */
+    }
+
+    .journal-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.85;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+        will-change: transform, opacity;
+    }
+
+    .journal-card:hover .journal-image,
+    .featured-article:hover .journal-image {
+        transform: scale(1.04);
+        opacity: 1;
+    }
+
+    .journal-card-category {
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    .journal-card-title {
+        font-family: 'Times New Roman', Times, Didot, Georgia, serif;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 1.25;
+        margin: 0 0 14px 0;
+    }
+
+    .journal-card-title a {
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .journal-card-title a:hover {
+        color: var(--text-secondary);
+    }
+
+    .journal-card-excerpt {
+        font-size: 14px;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        font-weight: 300;
+        margin: 0 0 28px 0;
+    }
+
+    .journal-card-meta {
+        margin-top: auto;
+        padding-top: 18px;
+        border-top: 1px solid var(--border-subtle);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--text-muted);
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* NEWSLETTER CTA SECTION */
+    .journal-newsletter-block {
+        margin-top: 100px;
+        padding: 60px 32px;
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        text-align: center;
+        border-radius: 4px;
+        content-visibility: auto;
+        contain-intrinsic-size: 0 300px;
+    }
+
+    .newsletter-title {
+        font-family: 'Times New Roman', Times, Didot, Georgia, serif;
+        font-size: clamp(24px, 3.5vw, 36px);
+        font-weight: 300;
+        margin-bottom: 12px;
+    }
+
+    .newsletter-subtitle {
+        font-size: 14px;
+        color: var(--text-secondary);
+        font-weight: 300;
+        max-width: 500px;
+        margin: 0 auto 32px auto;
+        line-height: 1.6;
+    }
+
+    .newsletter-form {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        max-width: 460px;
+        margin: 0 auto;
+    }
+
+    .newsletter-input {
+        flex: 1;
+        background-color: var(--bg-primary);
+        border: 1px solid var(--border-subtle);
+        padding: 12px 16px;
+        color: var(--text-primary);
+        font-size: 13px;
+        border-radius: 2px;
+        outline: none;
+        transition: border-color 0.2s ease;
+    }
+
+    .newsletter-input:focus {
+        border-color: var(--text-primary);
+    }
+
+    .newsletter-btn {
+        background-color: var(--text-primary);
+        color: #000000;
+        border: none;
+        padding: 12px 24px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: opacity 0.2s ease;
+    }
+
+    .newsletter-btn:hover {
+        opacity: 0.9;
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 1024px) {
+        .featured-article {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        .featured-image-frame {
+            aspect-ratio: 16/9;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .journal-archive-wrapper {
+            padding: 80px 16px 60px 16px;
+        }
+        .journal-header-block {
+            margin-bottom: 48px;
+        }
+        .journal-nav-filter {
+            justify-content: flex-start;
+        }
+        .journal-grid-container {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        .featured-article {
+            padding: 16px;
+        }
+        .newsletter-form {
+            flex-direction: column;
+        }
+        .newsletter-btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="journal-archive-wrapper">
+    
+    <!-- Editorial Journal Header -->
+    <header class="journal-header-block">
+        <span class="journal-archive-tag">The Archive</span>
+        <h1 class="journal-main-headline">
+            Perspectives on Visual Architecture &amp; Narrative Control.
+        </h1>
+        <div class="journal-divider-line"></div>
+        
+        <!-- Mobile-Optimized Category Navigation Filter -->
+        <div class="journal-nav-filter-container">
+            <nav aria-label="Journal Categories" class="journal-nav-filter">
+                <a href="?category=all" class="journal-filter-btn active" title="View all journal posts">All</a>
+                <a href="?category=portraits" class="journal-filter-btn" title="Filter by Portraits">Portraits</a>
+                <a href="?category=wedding" class="journal-filter-btn" title="Filter by Wedding">Wedding</a>
+                <a href="?category=anniversary" class="journal-filter-btn" title="Filter by Anniversary">Anniversary</a>
+                <a href="?category=birthday" class="journal-filter-btn" title="Filter by Birthday">Birthday</a>
+                <a href="?category=baby-shower" class="journal-filter-btn" title="Filter by Baby Shower">Baby Shower</a>
+                <a href="?category=club-party" class="journal-filter-btn" title="Filter by Club Party">Club Party</a>
+                <a href="?category=models" class="journal-filter-btn" title="Filter by Models">Models</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="journal-container">
+
+        <!-- FEATURED HERO ARTICLE (Top Highlight) -->
+        <section aria-label="Featured Story">
+            <article class="featured-article">
+                <div class="featured-image-frame">
+                    <img src="{% static 'images/hero_blog.jpg' %}" 
+                         alt="Minimalist monochromatic studio portrait lighting setup by Studio Rishav" 
+                         class="journal-image" 
+                         loading="eager"
+                         fetchpriority="high"
+                         decoding="async"
+                         width="800" 
+                         height="450">
+                </div>
+                <div class="featured-content">
+                    <span class="featured-tag">✦ Featured Essay</span>
+                    <h2 class="featured-title">
+                        <a href="/journal/mastering-monochromatic-tonality/" title="Read article on Mastering Monochromatic Tonality">
+                            Mastering Monochromatic Tonality in High-Fashion Portraiture
+                        </a>
+                    </h2>
+                    <p class="featured-excerpt">
+                        An in-depth exploration of shadows, micro-contrast adjustments, and framing dynamics to achieve cinematic depth reminiscent of timeless luxury editorials.
+                    </p>
+                    <div class="journal-card-meta">
+                        <span>July 2026</span>
+                        <span>6 Min Read</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- EDITORIAL GRID ARCHIVE SYSTEM -->
+        <section class="journal-grid-container" aria-label="Recent Journal Articles">
+            
+            <!-- Article: Portraits -->
+            <article class="journal-card">
+                <div class="journal-image-frame">
+                    <img src="{% static 'images/blog/editorial-portraits.jpg' %}" 
+                         alt="Fine-art studio portrait lighting composition" 
+                         class="journal-image" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="600" 
+                         height="400">
+                </div>
+                <span class="journal-card-category">Portraits</span>
+                <h2 class="journal-card-title">
+                    <a href="/journal/fine-art-portraiture-essentials/" title="Read article on Fine-Art Portraiture">
+                        The Fine Art of Subject Presence: Lighting for Minimalist Portraits
+                    </a>
+                </h2>
+                <p class="journal-card-excerpt">
+                    How directional key lighting and subtle backdrops highlight organic emotion, creating timeless studio portraits that elevate visual identity.
+                </p>
+                <div class="journal-card-meta">
+                    <span>July 2026</span>
+                    <span>5 Min Read</span>
+                </div>
+            </article>
+
+            <!-- Article: Wedding -->
+            <article class="journal-card">
+                <div class="journal-image-frame">
+                    <img src="{% static 'images/blog/luxury-wedding.jpg' %}" 
+                         alt="Cinematic luxury wedding photography documentation" 
+                         class="journal-image" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="600" 
+                         height="400">
+                </div>
+                <span class="journal-card-category">Wedding</span>
+                <h2 class="journal-card-title">
+                    <a href="/journal/documenting-luxury-weddings/" title="Read article on Luxury Weddings">
+                        Candid Luxury: Documenting Grand Celebrations Without Distraction
+                    </a>
+                </h2>
+                <p class="journal-card-excerpt">
+                    Balancing photojournalistic spontaneity with high-fashion aesthetics to archive real emotion across bespoke destination wedding events.
+                </p>
+                <div class="journal-card-meta">
+                    <span>July 2026</span>
+                    <span>7 Min Read</span>
+                </div>
+            </article>
+
+            <!-- Article: Anniversary -->
+            <article class="journal-card">
+                <div class="journal-image-frame">
+                    <img src="{% static 'images/blog/anniversary-session.jpg' %}" 
+                         alt="Editorial anniversary photoshoot in low light" 
+                         class="journal-image" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="600" 
+                         height="400">
+                </div>
+                <span class="journal-card-category">Anniversary</span>
+                <h2 class="journal-card-title">
+                    <a href="/journal/capturing-timeless-anniversaries/" title="Read article on Anniversary Photography">
+                        Enduring Narrative: Editorial Styling for Milestone Anniversaries
+                    </a>
+                </h2>
+                <p class="journal-card-excerpt">
+                    Capturing intimate connections and long-standing partnership dynamics through subdued color palettes and organic movement.
+                </p>
+                <div class="journal-card-meta">
+                    <span>June 2026</span>
+                    <span>6 Min Read</span>
+                </div>
+            </article>
+
+            <!-- Article: Birthday -->
+            <article class="journal-card">
+                <div class="journal-image-frame">
+                    <img src="{% static 'images/blog/birthday-editorial.jpg' %}" 
+                         alt="Modern luxury birthday shoot visual concept" 
+                         class="journal-image" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="600" 
+                         height="400">
+                </div>
+                <span class="journal-card-category">Birthday</span>
+                <h2 class="journal-card-title">
+                    <a href="/journal/redefining-birthday-editorial/" title="Read article on Birthday Editorials">
+                        High-Fashion Milestones: Redefining Birthday Visual Concepts
+                    </a>
+                </h2>
+                <p class="journal-card-excerpt">
+                    Moving away from generic event coverage to build custom visual themes and magazine-inspired portraits for personal celebrations.
+                </p>
+                <div class="journal-card-meta">
+                    <span>June 2026</span>
+                    <span>4 Min Read</span>
+                </div>
+            </article>
+
+            <!-- Article: Baby Shower -->
+            <article class="journal-card">
+                <div class="journal-image-frame">
+                    <img src="{% static 'images/blog/baby-shower.jpg' %}" 
+                         alt="Minimalist high key baby shower event coverage" 
+                         class="journal-image" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="600" 
+                         height="400">
+                </div>
+                <span class="journal-card-category">Baby Shower</span>
+                <h2 class="journal-card-title">
+                    <a href="/journal/maternity-and-baby-shower-aesthetics/" title="Read article on Baby Shower Photography">
+                        Soft Light Architecture: Crafting Elegant Baby Shower Records
+                    </a>
+                </h2>
+                <p class="journal-card-excerpt">
+                    Using soft diffusion, natural textures, and low-contrast palettes to preserve warmth during intimate family gatherings.
+                </p>
+                <div class="journal-card-meta">
+                    <span>May 2026</span>
+                    <span>5 Min Read</span>
+                </div>
+            </article>
+
+            <!-- Article: Club Party -->
+            <article class="journal-card">
+                <div class="journal-image-frame">
+                    <img src="{% static 'images/blog/club-nightlife.jpg' %}" 
+                         alt="High contrast flash nightlife and club party photography" 
+                         class="journal-image" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="600" 
+                         height="400">
+                </div>
+                <span class="journal-card-category">Club Party</span>
+                <h2 class="journal-card-title">
+                    <a href="/journal/nightlife-and-club-pacing/" title="Read article on Nightlife Photography">
+                        Neon &amp; Motion: Capturing High-Energy Club Culture
+                    </a>
+                </h2>
+                <p class="journal-card-excerpt">
+                    Direct-flash techniques, ambient light drag, and pacing strategies designed to capture raw momentum inside luxury nightlife venues.
+                </p>
+                <div class="journal-card-meta">
+                    <span>May 2026</span>
+                    <span>6 Min Read</span>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- STUDIO DISPATCH / NEWSLETTER CTA -->
+        <section class="journal-newsletter-block">
+            <h3 class="newsletter-title">The Studio Dispatch</h3>
+            <p class="newsletter-subtitle">
+                A monthly curatorial breakdown of visual direction, cinema aesthetics, and brand architecture. Delivered quietly to your inbox.
+            </p>
+            <form class="newsletter-form" action="#" method="post" onsubmit="event.preventDefault();">
+                <input type="email" placeholder="Enter your email address" class="newsletter-input" required aria-label="Email address">
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </section>
+
+    </div>
+</main>
+{% endblock %}

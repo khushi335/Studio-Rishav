@@ -1,0 +1,561 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Services & Capabilities — Visual Production & Creative Media | Studio Rishav{% endblock %}
+{% block meta_description %}Explore our comprehensive creative services: Photography, Videography, Video Editing, Retouching, Graphic Design, Animation, Branding, and DJ & Event Entertainment.{% endblock %}
+
+{% block extra_head %}
+<!-- Canonical Link -->
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+<!-- Schema.org Service Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Creative Media & Event Entertainment Services",
+  "provider": {
+    "@type": "Organization",
+    "name": "Studio Rishav",
+    "url": "https://studiorishav.com"
+  },
+  "areaServed": "Global",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Studio Services & Packages",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Photography Packages" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Videography Packages" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video Editing & Post-Production" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "High-End Photo Retouching" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Graphic Design & Branding" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Motion Graphics & Animation Packages" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Content Creation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DJ Services & Event Entertainment" } }
+    ]
+  }
+}
+</script>
+
+<style>
+    /* ==========================================================================
+       LUXURY EDITORIAL SERVICES PAGE STYLES
+       ========================================================================== */
+    :root {
+        --bg-primary: #050505;
+        --bg-card: #0A0A0C;
+        --bg-card-hover: #121216;
+        --border-subtle: #1C1C21;
+        --border-hover: #3F3F46;
+        --text-primary: #FFFFFF;
+        --text-secondary: #A1A1AA;
+        --text-muted: #71717A;
+        --accent-gold: #D4AF37;
+    }
+
+    .services-wrapper {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+        padding: 120px 24px 100px 24px;
+        box-sizing: border-box;
+    }
+
+    /* Container Width */
+    .services-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    /* Hero Section */
+    .services-header-block {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 80px auto;
+    }
+
+    .services-tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+    }
+
+    .services-main-headline {
+        font-family: 'Times New Roman', Times, Didot, Georgia, serif;
+        font-size: clamp(36px, 5.5vw, 64px);
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        line-height: 1.12;
+        margin: 0 0 24px 0;
+        color: var(--text-primary);
+    }
+
+    .services-subline {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--text-secondary);
+        font-weight: 300;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .header-divider {
+        width: 40px;
+        height: 1px;
+        background-color: var(--border-hover);
+        margin: 40px auto 0 auto;
+    }
+
+    /* Grid Layout for Services */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 32px;
+        margin-bottom: 120px;
+    }
+
+    /* Service Card */
+    .service-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 4px;
+        padding: 36px 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: border-color 0.4s ease, background-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+    }
+
+    .service-card:hover {
+        border-color: var(--border-hover);
+        background-color: var(--bg-card-hover);
+        transform: translateY(-6px);
+    }
+
+    .service-card-top {
+        margin-bottom: 32px;
+    }
+
+    .service-number {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+        display: block;
+    }
+
+    .service-title {
+        font-family: 'Times New Roman', Times, Didot, Georgia, serif;
+        font-size: 28px;
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 0 0 16px 0;
+        color: var(--text-primary);
+    }
+
+    .service-description {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-secondary);
+        font-weight: 300;
+        margin: 0 0 24px 0;
+    }
+
+    /* Feature List Inside Card */
+    .service-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 32px 0;
+        border-top: 1px solid var(--border-subtle);
+        padding-top: 20px;
+    }
+
+    .service-features li {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .service-features li::before {
+        content: "✦";
+        font-size: 8px;
+        color: var(--text-muted);
+    }
+
+    .service-action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        padding: 14px 20px;
+        background-color: transparent;
+        border: 1px solid var(--border-subtle);
+        color: var(--text-primary);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        text-decoration: none;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover .service-action-btn {
+        background-color: var(--text-primary);
+        color: #000000;
+        border-color: var(--text-primary);
+    }
+
+    /* PROCESS SECTION */
+    .process-section {
+        margin-bottom: 120px;
+        border-top: 1px solid var(--border-subtle);
+        padding-top: 80px;
+    }
+
+    .process-header {
+        text-align: center;
+        margin-bottom: 64px;
+    }
+
+    .process-title {
+        font-family: 'Times New Roman', Times, Didot, Georgia, serif;
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 300;
+        margin-bottom: 16px;
+    }
+
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 32px;
+    }
+
+    .process-step {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        padding: 28px;
+        border-radius: 4px;
+    }
+
+    .process-step-num {
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, Didot, Georgia, serif;
+        color: var(--text-muted);
+        margin-bottom: 16px;
+        display: block;
+    }
+
+    .process-step-title {
+        font-size: 16px;
+        font-weight: 500;
+        margin: 0 0 12px 0;
+        color: var(--text-primary);
+    }
+
+    .process-step-desc {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        font-weight: 300;
+        margin: 0;
+    }
+
+    /* CONSULTATION BANNER / CTA */
+    .cta-banner {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        padding: 64px 32px;
+        text-align: center;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-title {
+        font-family: 'Times New Roman', Times, Didot, Georgia, serif;
+        font-size: clamp(26px, 3.5vw, 40px);
+        font-weight: 300;
+        margin-bottom: 16px;
+    }
+
+    .cta-desc {
+        font-size: 15px;
+        color: var(--text-secondary);
+        max-width: 560px;
+        margin: 0 auto 36px auto;
+        line-height: 1.6;
+        font-weight: 300;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background-color: var(--text-primary);
+        color: #000000;
+        padding: 16px 36px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        text-decoration: none;
+        border-radius: 2px;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .cta-button:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 768px) {
+        .services-wrapper {
+            padding: 80px 16px 60px 16px;
+        }
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        .process-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .service-card {
+            padding: 28px 20px;
+        }
+        .cta-banner {
+            padding: 48px 20px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="services-wrapper">
+    <div class="services-container">
+
+        <!-- HEADER SECTION -->
+        <header class="services-header-block">
+            <span class="services-tag">Capabilities &amp; Services</span>
+            <h1 class="services-main-headline">
+                Crafting Visual Legacies Through Precision &amp; Aesthetic Control.
+            </h1>
+            <p class="services-subline">
+                From high-fashion editorial production to dynamic event entertainment, motion graphics, and full brand identities — explore our tailored service packages.
+            </p>
+            <div class="header-divider"></div>
+        </header>
+
+        <!-- SERVICES GRID -->
+        <section class="services-grid" aria-label="Studio Services Offered">
+
+            <!-- 01: Photography Packages -->
+            <article class="service-card">
+                <div class="service-card-top">
+                    <span class="service-number">01 / PRODUCTION</span>
+                    <h2 class="service-title">Photography Packages</h2>
+                    <p class="service-description">
+                        Bespoke studio and on-location photography sessions. Styled for fashion editorials, portraits, luxury events, and commercial campaigns with high-precision lighting architecture.
+                    </p>
+                    <ul class="service-features">
+                        <li>Editorial, Portraiture &amp; Fashion</li>
+                        <li>High-resolution digital delivery</li>
+                        <li>On-location &amp; studio setups</li>
+                    </ul>
+                </div>
+                <a href="{% url 'photography_packages' %}" class="service-action-btn" title="Inquire Photography Packages">
+                    Explore Packages <span>→</span>
+                </a>
+            </article>
+
+            <!-- 02: Videography Packages -->
+            <article class="service-card">
+                <div class="service-card-top">
+                    <span class="service-number">02 / CINEMA</span>
+                    <h2 class="service-title">Videography Packages</h2>
+                    <p class="service-description">
+                        Cinematic multi-camera video production for weddings, brand launches, commercials, and high-energy live event coverage filmed in pristine 4K resolution.
+                    </p>
+                    <ul class="service-features">
+                        <li>4K cinematic film &amp; highlight reels</li>
+                        <li>Multi-camera &amp; directional audio capture</li>
+                        <li>Commercial &amp; documentary coverage</li>
+                    </ul>
+                </div>
+                <a href="{% url 'videography_packages' %}" class="service-action-btn" title="Inquire Videography Packages">
+                    Explore Packages <span>→</span>
+                </a>
+            </article>
+
+            <!-- 03: Editing & Retouching -->
+            <article class="service-card">
+                <div class="service-card-top">
+                    <span class="service-number">03 / POST-PRODUCTION</span>
+                    <h2 class="service-title">Editing &amp; Retouching Packages</h2>
+                    <p class="service-description">
+                        Professional post-production solutions encompassing advanced video editing, high-end skin and beauty retouching, color grading, and archival polishing.
+                    </p>
+                    <ul class="service-features">
+                        <li>Video editing &amp; narrative pacing</li>
+                        <li>High-end beauty &amp; skin retouching</li>
+                        <li>Color grading &amp; master exports</li>
+                    </ul>
+                </div>
+                <a href="{% url 'editing_packages' %}" class="service-action-btn" title="Inquire Editing Packages">
+                    Explore Packages <span>→</span>
+                </a>
+            </article>
+
+            <!-- 04: Graphic Design & Branding -->
+            <article class="service-card">
+                <div class="service-card-top">
+                    <span class="service-number">04 / DESIGN</span>
+                    <h2 class="service-title">Graphic Design &amp; Branding</h2>
+                    <p class="service-description">
+                        Complete corporate and personal visual identities. We craft logos, brand guidelines, marketing assets, vector graphics, and digital collateral that elevate your market presence.
+                    </p>
+                    <ul class="service-features">
+                        <li>Brand identity &amp; logo design</li>
+                        <li>Marketing &amp; promotional materials</li>
+                        <li>Print &amp; digital vector assets</li>
+                    </ul>
+                </div>
+                <a href="{% url 'design_packages' %}" class="service-action-btn" title="Inquire Graphic Design Packages">
+                    Explore Packages <span>→</span>
+                </a>
+            </article>
+
+            <!-- 05: Animation & Motion Graphics -->
+            <article class="service-card">
+                <div class="service-card-top">
+                    <span class="service-number">05 / MOTION</span>
+                    <h2 class="service-title">Animation Packages</h2>
+                    <p class="service-description">
+                        Dynamic motion design, 2D/3D animation, animated title sequences, and social media visual assets designed to captivate audiences across modern digital channels.
+                    </p>
+                    <ul class="service-features">
+                        <li>Motion graphics &amp; title design</li>
+                        <li>2D/3D character &amp; logo animation</li>
+                        <li>Social media video graphics</li>
+                    </ul>
+                </div>
+                <a href="{% url 'animation_packages' %}" class="service-action-btn" title="Inquire Animation Packages">
+                    Explore Packages <span>→</span>
+                </a>
+            </article>
+
+            <!-- 06: Social Media Content Creation -->
+            <article class="service-card">
+                <div class="service-card-top">
+                    <span class="service-number">06 / CONTENT</span>
+                    <h2 class="service-title">Social Media Content Creation</h2>
+                    <p class="service-description">
+                        Tailor-made short-form videos, reels, aesthetic imagery, and promotional content formatted and color-optimized specifically for high engagement across digital platforms.
+                    </p>
+                    <ul class="service-features">
+                        <li>Vertical Reels, Shorts &amp; TikTok content</li>
+                        <li>Content batching &amp; curation</li>
+                        <li>Platform-specific color matching</li>
+                    </ul>
+                </div>
+                <a href="{% url 'social_content_packages' %}" class="service-action-btn" title="Inquire Social Content Creation">
+                    Explore Packages <span>→</span>
+                </a>
+            </article>
+
+            <!-- 07: DJ & Event Entertainment -->
+            <article class="service-card">
+                <div class="service-card-top">
+                    <span class="service-number">07 / ENTERTAINMENT</span>
+                    <h2 class="service-title">DJ &amp; Event Entertainment</h2>
+                    <p class="service-description">
+                        Premium DJ performance and atmospheric lighting setups for luxury private parties, corporate galas, club venues, and weddings with sound and light control.
+                    </p>
+                    <ul class="service-features">
+                        <li>Live DJ performance &amp; custom curation</li>
+                        <li>Pro audio &amp; intelligent lighting rigs</li>
+                        <li>VIP, club &amp; private event sets</li>
+                    </ul>
+                </div>
+                <a href="{% url 'dj_packages' %}" class="service-action-btn" title="Inquire DJ Packages">
+                    Explore Packages <span>→</span>
+                </a>
+            </article>
+
+            <!-- 08: Custom Quote Option -->
+            <article class="service-card" style="border-color: var(--border-hover);">
+                <div class="service-card-top">
+                    <span class="service-number" style="color: var(--accent-gold);">08 / TAILORED SOLUTIONS</span>
+                    <h2 class="service-title">Custom Quote Option</h2>
+                    <p class="service-description">
+                        Require a hybrid package combining photography, video editing, branding, and live entertainment? We design custom production plans suited precisely to your scope.
+                    </p>
+                    <ul class="service-features">
+                        <li>Bundled multi-service coverage</li>
+                        <li>Custom scope &amp; licensing terms</li>
+                        <li>Dedicated production coordinator</li>
+                    </ul>
+                </div>
+                <a href="{% url 'custom_quote' %}" class="service-action-btn" style="background-color: var(--text-primary); color: #000;" title="Request Custom Quote">
+                    Request Custom Quote <span>→</span>
+                </a>
+            </article>
+
+        </section>
+
+        <!-- OUR PROCESS SECTION -->
+        <section class="process-section">
+            <div class="process-header">
+                <span class="services-tag">Methodology</span>
+                <h2 class="process-title">The Execution Process</h2>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <span class="process-step-num">01 /</span>
+                    <h3 class="process-step-title">Consultation &amp; Concept</h3>
+                    <p class="process-step-desc">We discuss your project goals, review style references, and define project specs before production starts.</p>
+                </div>
+
+                <div class="process-step">
+                    <span class="process-step-num">02 /</span>
+                    <h3 class="process-step-title">Production &amp; Creation</h3>
+                    <p class="process-step-desc">Executing capturing, designing, animating, or mixing with technical precision and artistic focus.</p>
+                </div>
+
+                <div class="process-step">
+                    <span class="process-step-num">03 /</span>
+                    <h3 class="process-step-title">Refinement &amp; Polish</h3>
+                    <p class="process-step-desc">Every deliverable undergoes color tuning, high-grade retouching, or audio/visual polish for perfection.</p>
+                </div>
+
+                <div class="process-step">
+                    <span class="process-step-num">04 /</span>
+                    <h3 class="process-step-title">Final Delivery</h3>
+                    <p class="process-step-desc">Receive full-resolution media, raw assets, or performance execution delivered on schedule.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION BANNER -->
+        <section class="cta-banner">
+            <h2 class="cta-title">Ready to Begin Your Creative Project?</h2>
+            <p class="cta-desc">
+                Contact Studio Rishav to request custom package details, check date availability, or request a custom quote tailored to your budget and vision.
+            </p>
+            <a href="/contact/" class="cta-button" title="Contact Studio Rishav">Start a Conversation</a>
+        </section>
+
+    </div>
+</main>
+{% endblock %}

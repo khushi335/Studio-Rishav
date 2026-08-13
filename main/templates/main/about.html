@@ -1,0 +1,540 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Studio Rishav | Our Story & Visual Philosophy{% endblock %}
+{% block meta_description %}Discover Studio Rishav—a premier creative production house specializing in luxury photography, cinematic films, and audio production across Sydney and worldwide.{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* ==========================================================================
+       STUDIO RISHAV - MONOCHROME EDITORIAL STYLES
+       ========================================================================== */
+    .premium-about-architecture {
+        width: 100%;
+        background-color: #000000;
+        color: #FFFFFF;
+    }
+
+    /* Hero Section with Background Image */
+    .about-hero-header-block {
+        position: relative;
+        padding: 90px 24px 60px 24px;
+        border-bottom: 1px solid #1C1C1E;
+        background-image: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.95) 100%), url("{% static 'images/sydney_hero.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .inner-hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .hero-category-tagline {
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.35em;
+        color: #A1A1AA;
+        margin-bottom: 16px;
+    }
+
+    .about-main-headline {
+        font-size: clamp(36px, 6vw, 80px);
+        line-height: 1.08;
+        color: #FFFFFF;
+        margin-bottom: 24px;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+    }
+
+    .hero-introductory-paragraph {
+        font-size: clamp(16px, 2vw, 24px);
+        font-weight: 300;
+        line-height: 1.6;
+        color: #E4E4E7;
+        max-width: 900px;
+    }
+
+    /* Section Spacing Adjustments */
+    .about-split-showcase-container {
+        padding: 60px 24px;
+        border-bottom: 1px solid #1C1C1E;
+    }
+
+    .split-wrapper-max {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+    }
+
+    .split-text-side {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .split-mini-marker {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: #A1A1AA;
+        margin-bottom: 12px;
+    }
+
+    .split-section-title {
+        font-size: clamp(28px, 3vw, 48px);
+        line-height: 1.15;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+
+    .split-narrative-paragraph {
+        font-size: 15px;
+        line-height: 1.75;
+        letter-spacing: 0.02em;
+        color: #A1A1AA;
+        margin-bottom: 16px;
+    }
+
+    .split-narrative-paragraph:last-child { 
+        margin-bottom: 0; 
+    }
+
+    /* Manifesto Grid */
+    .manifesto-grid-pillars {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        border-top: 1px solid #1C1C1E;
+        padding-top: 24px;
+    }
+
+    .pillar-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .pillar-numeric {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #FFFFFF;
+        font-weight: 600;
+    }
+
+    .pillar-text {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #A1A1AA;
+    }
+
+    /* Image Frames */
+    .luxury-monochrome-frame {
+        position: relative;
+        width: 100%;
+        background-color: #121212;
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .luxury-bounded-image {
+        width: 100%;
+        height: 480px;
+        object-fit: cover;
+        filter: grayscale(100%) contrast(110%);
+        transition: filter 0.5s ease;
+    }
+    
+    .luxury-monochrome-frame:hover .luxury-bounded-image {
+        filter: grayscale(0%) contrast(100%);
+    }
+
+    /* Inverse Layout */
+    .inverse-split-layout .split-wrapper-max {
+        direction: rtl;
+    }
+    .inverse-split-layout .split-text-side, 
+    .inverse-split-layout .split-visual-side {
+        direction: ltr;
+    }
+
+    /* Capabilities Matrix */
+    .ecosystem-matrix-grid-section {
+        padding: 70px 24px;
+        background-color: #0A0A0A;
+        border-bottom: 1px solid #1C1C1E;
+    }
+
+    .matrix-wrapper-max {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .matrix-header-center {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    .matrix-mini-tag {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.35em;
+        color: #A1A1AA;
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    .matrix-main-title {
+        font-size: clamp(28px, 3.5vw, 48px);
+        color: #FFFFFF;
+        margin-bottom: 16px;
+        font-weight: 300;
+    }
+
+    .center-accent-line {
+        width: 40px;
+        height: 1px;
+        background-color: #FFFFFF;
+        margin: 0 auto;
+    }
+
+    .matrix-structural-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background-color: #1C1C1E;
+        border: 1px solid #1C1C1E;
+    }
+
+    .matrix-service-node {
+        background-color: #000000;
+        padding: 40px 32px;
+        transition: background-color 0.4s ease;
+    }
+    .matrix-service-node:hover {
+        background-color: #121212;
+    }
+
+    .node-numeric-id {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: #71717A;
+        margin-bottom: 20px;
+    }
+
+    .node-title {
+        font-size: 20px;
+        color: #FFFFFF;
+        margin-bottom: 12px;
+        font-weight: 400;
+    }
+
+    .node-desc {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #A1A1AA;
+    }
+
+    /* Footer CTA */
+    .premium-conversion-footer-cta {
+        padding: 80px 24px;
+        background-color: #000000;
+        text-align: center;
+    }
+
+    .cta-inner-alignment-box {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .cta-sub-header {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: #A1A1AA;
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    .cta-primary-title {
+        font-size: clamp(28px, 3.5vw, 52px);
+        line-height: 1.15;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+
+    .cta-description-text {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #A1A1AA;
+        margin-bottom: 36px;
+    }
+
+    .cta-button-cluster {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .cta-solid-action-btn {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 500;
+        background-color: #FFFFFF;
+        color: #000000;
+        padding: 16px 36px;
+        border: 1px solid #FFFFFF;
+        transition: all 0.4s ease;
+    }
+    .cta-solid-action-btn:hover {
+        background-color: #000000;
+        color: #FFFFFF;
+    }
+
+    .cta-outline-action-btn {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 500;
+        background-color: transparent;
+        color: #FFFFFF;
+        padding: 16px 36px;
+        border: 1px solid #3F3F46;
+        transition: all 0.4s ease;
+    }
+    .cta-outline-action-btn:hover {
+        border-color: #FFFFFF;
+    }
+
+    /* Media Queries */
+    @media (max-width: 1024px) {
+        .split-wrapper-max { grid-template-columns: 1fr; gap: 36px; }
+        .inverse-split-layout .split-wrapper-max { direction: ltr; }
+        .luxury-bounded-image { height: 380px; }
+        .matrix-structural-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+        .about-hero-header-block { padding: 60px 20px 40px 20px; }
+        .about-split-showcase-container { padding: 40px 20px; }
+        .ecosystem-matrix-grid-section { padding: 50px 20px; }
+        .matrix-structural-grid { grid-template-columns: 1fr; }
+        .matrix-service-node { padding: 32px 24px; }
+        .premium-conversion-footer-cta { padding: 60px 20px; }
+        .cta-button-cluster { flex-direction: column; width: 100%; gap: 12px; }
+        .cta-solid-action-btn, .cta-outline-action-btn { width: 100%; text-align: center; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="premium-about-architecture">
+    
+    <!-- Hero Block with Background Image -->
+    <div class="about-hero-header-block">
+        <div class="inner-hero-container">
+            <span class="hero-category-tagline">Studio Rishav Identity</span>
+            <h1 class="about-main-headline heading-premium">CREATING STORIES<br>BEYOND FRAMES</h1>
+            <p class="hero-introductory-paragraph">
+                An international multi-disciplinary creative studio merging authentic visual emotion, cinematic movement, and luxury production standards into every frame.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Meet the Founder Component -->
+    <section class="relative w-full bg-black text-white py-12 sm:py-16 px-6 overflow-hidden border-b border-white/10" id="about-founder">
+        <div class="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                
+                <!-- Portrait -->
+                <div class="lg:col-span-5 relative group">
+                    <div class="relative z-10 overflow-hidden border border-white/15 bg-neutral-950/80 p-2 sm:p-3 transition-all duration-700 group-hover:border-white/40">
+                        <div class="relative aspect-[3/4] overflow-hidden bg-neutral-900">
+                            <img 
+                                src="{% static 'images/rishav-portrait.jpg' %}" 
+                                alt="Rishav - Founder of Studio Rishav" 
+                                class="w-full h-full object-cover filter grayscale contrast-125 transition-transform duration-1000 ease-out group-hover:scale-105"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                            <div class="absolute bottom-4 left-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-full">
+                                <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                                <span class="text-[10px] tracking-[0.25em] uppercase text-gray-300 font-light">
+                                    Sydney • Worldwide
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bio Text -->
+                <div class="lg:col-span-7 space-y-6 lg:pl-4 select-none">
+                    <div class="space-y-2">
+                        <span class="text-[10px] sm:text-xs tracking-[0.4em] uppercase text-gray-400 block font-light">
+                            Behind the Vision
+                        </span>
+                        <h2 class="heading-premium text-3xl sm:text-5xl font-light uppercase tracking-[0.08em] leading-tight text-white">
+                            Meet the Founder
+                        </h2>
+                        <div class="w-12 h-[1px] bg-white/40"></div>
+                    </div>
+
+                    <div class="space-y-4 text-gray-300 text-sm sm:text-base font-light leading-relaxed">
+                        <p class="text-white/90 text-lg font-normal leading-snug">
+                            Hi, I’m <span class="font-medium text-white underline underline-offset-8 decoration-white/30">Rishav</span>, founder of Studio Rishav.
+                        </p>
+                        <p>
+                            For over nine years, I've been creating premium photography, cinematic films, commercial campaigns, luxury weddings, and high-end visual experiences across Nepal and Australia.
+                        </p>
+                        <p class="text-gray-400 text-xs sm:text-sm tracking-wide">
+                            Driven by timeless storytelling and high-contrast editorial craft, my focus is capturing moments that elevate stories far beyond standard frames.
+                        </p>
+                    </div>
+
+                    <!-- Impact Metrics Grid -->
+                    <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10">
+                        <div class="space-y-1">
+                            <h3 class="text-2xl font-light text-white">9<span class="text-gray-400 font-extralight">+</span></h3>
+                            <p class="text-[10px] tracking-[0.15em] uppercase text-gray-400">Years Exp.</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="text-2xl font-light text-white">500<span class="text-gray-400 font-extralight">+</span></h3>
+                            <p class="text-[10px] tracking-[0.15em] uppercase text-gray-400">Projects</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="text-2xl font-light text-white">50<span class="text-gray-400 font-extralight">+</span></h3>
+                            <p class="text-[10px] tracking-[0.15em] uppercase text-gray-400">Brands</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="text-2xl font-light text-white">Global</h3>
+                            <p class="text-[10px] tracking-[0.15em] uppercase text-gray-400">Available</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 01 -->
+    <div class="about-split-showcase-container">
+        <div class="split-wrapper-max">
+            <div class="split-text-side">
+                <span class="split-mini-marker">01 // Creative Vision</span>
+                <h2 class="split-section-title heading-premium">Creative Excellence</h2>
+                <p class="split-narrative-paragraph">
+                    Studio Rishav provides end-to-end visual production, removing the hassle of coordinating multiple independent freelancers. Inspired by high-fashion editorial standards and clean modern aesthetics, we deliver tailored media assets across all mediums.
+                </p>
+                <p class="split-narrative-paragraph">
+                    Based in Sydney, our team executes creative projects worldwide—from luxury weddings and fashion campaigns to commercial branding and large-scale event production.
+                </p>
+            </div>
+            <div class="split-visual-side">
+                <div class="luxury-monochrome-frame">
+                    <img src="{% static 'images/studio-workspace.jpg' %}" alt="Studio Rishav Production Environment" class="luxury-bounded-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 02 -->
+    <div class="about-split-showcase-container inverse-split-layout">
+        <div class="split-wrapper-max">
+            <div class="split-text-side">
+                <span class="split-mini-marker">02 // Production Standard</span>
+                <h2 class="split-section-title heading-premium">Our Core Philosophy</h2>
+                <p class="split-narrative-paragraph">
+                    Every project undergoes a precise, structured workflow—from initial concept development and high-resolution optical capture to master color grading and audio editing.
+                </p>
+                <div class="manifesto-grid-pillars">
+                    <div class="pillar-card">
+                        <span class="pillar-numeric">01 / Timeless Aesthetic</span>
+                        <p class="pillar-text">Clean, intentional framing that keeps the focus on real emotions.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <span class="pillar-numeric">02 / Seamless Quality</span>
+                        <p class="pillar-text">Consistent lighting, color tone, and sound across all project assets.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="split-visual-side">
+                <div class="luxury-monochrome-frame">
+                    <img src="{% static 'images/wedding1.jpg' %}" alt="Studio Rishav Cinematography Work" class="luxury-bounded-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="ecosystem-matrix-grid-section">
+        <div class="matrix-wrapper-max">
+            <div class="matrix-header-center">
+                <span class="matrix-mini-tag">What We Do</span>
+                <h2 class="matrix-main-title heading-premium">Production Services</h2>
+                <div class="center-accent-line"></div>
+            </div>
+
+            <div class="matrix-structural-grid">
+                <div class="matrix-service-node">
+                    <div class="node-numeric-id">01</div>
+                    <h3 class="node-title heading-premium">Photography</h3>
+                    <p class="node-desc">Editorial portraits, fashion shoots, commercial products, and high-end event coverage.</p>
+                </div>
+                <div class="matrix-service-node">
+                    <div class="node-numeric-id">02</div>
+                    <h3 class="node-title heading-premium">Videography</h3>
+                    <p class="node-desc">Cinematic wedding films, commercial ads, brand showreels, and event films.</p>
+                </div>
+                <div class="matrix-service-node">
+                    <div class="node-numeric-id">03</div>
+                    <h3 class="node-title heading-premium">Post-Production</h3>
+                    <p class="node-desc">High-end retouching, precise color grading, video editing, and sound design.</p>
+                </div>
+                <div class="matrix-service-node">
+                    <div class="node-numeric-id">04</div>
+                    <h3 class="node-title heading-premium">Motion Design</h3>
+                    <p class="node-desc">Custom brand animations, video intros, title cards, and visual graphics.</p>
+                </div>
+                <div class="matrix-service-node">
+                    <div class="node-numeric-id">05</div>
+                    <h3 class="node-title heading-premium">Social Content</h3>
+                    <p class="node-desc">High-engagement vertical reels, short clips, and platform-optimized content.</p>
+                </div>
+                <div class="matrix-service-node">
+                    <div class="node-numeric-id">06</div>
+                    <h3 class="node-title heading-premium">Audio & DJ Services</h3>
+                    <p class="node-desc">Concert-quality audio setup and curated music for major events and weddings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conversion Footer CTA -->
+    <div class="premium-conversion-footer-cta">
+        <div class="cta-inner-alignment-box">
+            <span class="cta-sub-header">Get In Touch</span>
+            <h2 class="cta-primary-title heading-premium">LET'S CREATE TOGETHER</h2>
+            <p class="cta-description-text">
+                Reach out to discuss your upcoming project, event dates, or custom creative requirements.
+            </p>
+            <div class="cta-button-cluster">
+                <a href="/contact/" class="cta-solid-action-btn">Book Consultation</a>
+                <a href="/portfolio/" class="cta-outline-action-btn">Explore Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
