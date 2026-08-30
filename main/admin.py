@@ -2,12 +2,23 @@ from django.contrib import admin
 from .models import PortfolioItem, PhotographyCategory, PhotographyImage
 
 # Register your models here.
+# @admin.register(PortfolioItem)
+# class PortfolioItemAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'ecosystem', 'category', 'created_at')
+#     list_filter = ('ecosystem', 'category')
+#     search_fields = ('title', 'category')
+#     prepopulated_fields = {'slug': ('title',)} # Automatically creates a slug as you type the title
+
 @admin.register(PortfolioItem)
 class PortfolioItemAdmin(admin.ModelAdmin):
-    list_display = ('title', 'ecosystem', 'category', 'created_at')
-    list_filter = ('ecosystem', 'category')
-    search_fields = ('title', 'category')
-    prepopulated_fields = {'slug': ('title',)} # Automatically creates a slug as you type the title
+    # Fixed: replaced 'category' with 'ecosystem' and 'subcategory'
+    list_display = ('title', 'ecosystem', 'subcategory', 'is_wide_span', 'created_at')
+    
+    # Fixed: list_filter updated to match model fields
+    list_filter = ('ecosystem', 'subcategory', 'is_wide_span')
+    
+    search_fields = ('title', 'subcategory')
+    prepopulated_fields = {'slug': ('title',)}
 
 class PhotographyImageInline(admin.TabularInline):
     model = PhotographyImage
