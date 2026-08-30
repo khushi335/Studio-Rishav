@@ -1,0 +1,681 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Rishav Studio Photography | Studio Rishav Luxury Production Showcase{% endblock %}
+{% block meta_description %}Explore high-end fashion photography, editorial weddings, luxury branding assets, and corporate DJ entertainment events by Studio Rishav.{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* CSS Variables & Core Theme */
+    :root {
+        --bg-main: #050505;
+        --bg-card: #0D0D0E;
+        --bg-card-hover: #141416;
+        --border-subtle: rgba(255, 255, 255, 0.08);
+        --border-hover: rgba(255, 255, 255, 0.3);
+        --text-primary: #FFFFFF;
+        --text-secondary: #9A9A9E;
+        --accent-glow: rgba(255, 255, 255, 0.06);
+        --font-serif: 'Cormorant Garamond', Georgia, serif;
+        --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .premium-portfolio-viewport {
+        width: 100%;
+        min-height: 100vh;
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        padding-bottom: clamp(60px, 8vw, 120px);
+        font-family: var(--font-sans);
+        contain: content;
+    }
+
+    /* Header & Navigation */
+    .portfolio-header-strip {
+        padding: clamp(60px, 8vw, 100px) 5% 20px 5%;
+        max-width: 1800px;
+        margin: 0 auto;
+    }
+
+    .portfolio-mini-tag {
+        display: inline-block;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.35em;
+        color: var(--text-secondary);
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+
+    .portfolio-main-title {
+        font-family: var(--font-serif);
+        font-size: clamp(32px, 5.5vw, 68px);
+        font-weight: 300;
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        color: var(--text-primary);
+        margin-bottom: 28px;
+    }
+
+    /* Primary Filter Bar */
+    .portfolio-filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .filter-node-btn {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border-subtle);
+        color: var(--text-secondary);
+        padding: 10px 22px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-weight: 500;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+        will-change: transform;
+    }
+
+    .filter-node-btn:hover, 
+    .filter-node-btn.active-filter-node {
+        color: #000000;
+        background-color: #FFFFFF;
+        border-color: #FFFFFF;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+    }
+
+    /* Subcategory Pills Strip */
+    .subcategory-filter-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 36px;
+        transition: opacity 0.3s ease;
+    }
+
+    .sub-pill-btn {
+        background: transparent;
+        border: 1px solid var(--border-subtle);
+        color: var(--text-secondary);
+        padding: 6px 14px;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .sub-pill-btn:hover,
+    .sub-pill-btn.active-sub-pill {
+        color: #FFFFFF;
+        border-color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Portfolio Grid Architecture */
+    .portfolio-fluid-grid {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 5%;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: clamp(16px, 2.5vw, 28px);
+    }
+
+    .project-display-card {
+        grid-column: span 3;
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        contain: layout style;
+        transition: border-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        will-change: transform, opacity;
+    }
+
+    .project-display-card.wide-span { 
+        grid-column: span 6; 
+    }
+
+    /* Card Media Wrapper - Updated to 1024:1536 (2:3) Aspect Ratio */
+    .card-media-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1024 / 1536;
+        overflow: hidden;
+        background-color: #000000;
+        cursor: pointer;
+    }
+
+    .project-display-card.wide-span .card-media-wrapper { 
+        aspect-ratio: 1024 / 1536;
+    }
+
+    /* Hardware-Accelerated Image Rendering */
+    .project-card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: grayscale(100%) contrast(105%);
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, filter;
+    }
+
+    /* Card Metadata Mask */
+    .project-metadata-mask {
+        padding: 18px 22px;
+        background-color: var(--bg-card);
+        border-top: 1px solid var(--border-subtle);
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: background-color 0.3s ease;
+    }
+
+    .project-category-stamp {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
+        display: block;
+        font-weight: 500;
+    }
+
+    .project-title-text {
+        font-family: var(--font-serif);
+        font-size: clamp(18px, 1.8vw, 22px);
+        font-weight: 300;
+        color: var(--text-primary);
+        line-height: 1.25;
+        margin: 0;
+        transition: color 0.3s ease;
+    }
+
+    /* Hover Interactions */
+    @media (hover: hover) and (pointer: fine) {
+        .project-display-card:hover { 
+            border-color: var(--border-hover); 
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .project-display-card:hover .project-card-image { 
+            transform: scale(1.03); 
+            filter: grayscale(0%) contrast(100%); 
+        }
+
+        .project-display-card:hover .project-metadata-mask { 
+            background-color: var(--bg-card-hover); 
+        }
+    }
+
+    /* Fullscreen Lightbox Overlay */
+    .gallery-lightbox-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: 2000;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        touch-action: none;
+    }
+
+    .lightbox-utility-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 2010;
+        box-sizing: border-box;
+    }
+
+    .lightbox-counter {
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+    }
+
+    .lightbox-actions-group {
+        display: flex;
+        gap: 12px;
+    }
+
+    .lightbox-ui-btn {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border-subtle);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        color: #FFFFFF;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .lightbox-ui-btn:hover { 
+        background: #FFFFFF; 
+        color: #000000;
+    }
+
+    .lightbox-viewport-stage {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        box-sizing: border-box;
+    }
+
+    .lightbox-media-wrapper {
+        position: relative;
+        max-width: 90%;
+        max-height: 85vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lightbox-core-image {
+        max-width: 100%;
+        max-height: 82vh;
+        object-fit: contain;
+        border-radius: 4px;
+        cursor: zoom-in;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform;
+    }
+
+    .lightbox-core-image.zoomed {
+        transform: scale(1.6);
+        cursor: zoom-out;
+    }
+
+    .lightbox-nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border-subtle);
+        color: #FFFFFF;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 2020;
+        transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .lightbox-nav-arrow:hover { 
+        background: #FFFFFF; 
+        color: #000000;
+    }
+
+    .arrow-left { left: 24px; }
+    .arrow-right { right: 24px; }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+        .project-display-card { grid-column: span 6; }
+        .project-display-card.wide-span { grid-column: span 6; }
+        .card-media-wrapper, .project-display-card.wide-span .card-media-wrapper { aspect-ratio: 1024 / 1536; }
+    }
+
+    @media (max-width: 640px) {
+        .portfolio-header-strip { padding: 50px 20px 16px 20px; }
+        .portfolio-fluid-grid { padding: 0 16px; gap: 16px; }
+        .project-display-card, .project-display-card.wide-span { grid-column: span 12; }
+        .card-media-wrapper, .project-display-card.wide-span .card-media-wrapper { aspect-ratio: 1024 / 1536; }
+        .filter-node-btn { flex: 1 1 auto; text-align: center; }
+        .lightbox-nav-arrow { display: none; }
+        .lightbox-viewport-stage { padding: 16px; }
+        .project-card-image { filter: grayscale(0%); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="premium-portfolio-viewport">
+    
+    <section class="portfolio-header-strip">
+        <span class="portfolio-mini-tag">Visual Ledger</span>
+        <h1 class="portfolio-main-title">PORTFOLIO ARCHIVE</h1>
+        
+        <!-- Primary Ecosystem Filters -->
+        <div class="portfolio-filter-bar">
+            <button class="filter-node-btn active-filter-node" onclick="setEcosystemFilter('all', this)">All Curation</button>
+            <button class="filter-node-btn" onclick="setEcosystemFilter('photography', this)">Photography</button>
+            <button class="filter-node-btn" onclick="setEcosystemFilter('films', this)">Films</button>
+            <button class="filter-node-btn" onclick="setEcosystemFilter('design', this)">Design & Animation</button>
+            <button class="filter-node-btn" onclick="setEcosystemFilter('dj-events', this)">DJ Events</button>
+        </div>
+
+        <!-- Subcategory Pills Strip -->
+        <div class="subcategory-filter-strip" id="subcategory-strip">
+            <button class="sub-pill-btn active-sub-pill" onclick="setSubcategoryFilter('all', this)">All Subcategories</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('anniversary', this)">Anniversary</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('birthday', this)">Birthday</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('first-rice-eating', this)">First Rice Eating</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('gender-reveal', this)">Gender Reveal</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('graduation', this)">Graduation</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('gunyo-choli', this)">Gunyo Choli</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('landscapes', this)">Landscapes</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('weddings', this)">Weddings</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('christmas', this)">Christmas</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('food', this)">Food</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('being-human-nepal', this)">Being Human Nepal</button>
+            <button class="sub-pill-btn" onclick="setSubcategoryFilter('educational-consultancy', this)">Educational Consultancy</button>
+        </div>
+    </section>
+
+    <!-- Portfolio Fluid Grid -->
+    <section class="portfolio-fluid-grid" id="portfolio-matrix-dom">
+        {% if items %}
+            {% for item in items %}
+            <div class="project-display-card {% if item.is_wide_span %}wide-span{% endif %}" 
+                 data-ecosystem="{{ item.ecosystem }}"
+                 data-subcategory="{{ item.subcategory|slugify }}">
+                
+                <div class="card-media-wrapper" 
+                     data-src="{{ item.image.url }}"
+                     onclick="openLightbox(this)">
+                    <img src="{{ item.image.url }}" 
+                         alt="{{ item.title }} - Studio Rishav" 
+                         class="project-card-image" 
+                         loading="lazy"
+                         decoding="async"
+                         width="1024" 
+                         height="1536">
+                </div>
+
+                <div class="project-metadata-mask">
+                    <div>
+                        <span class="project-category-stamp">
+                            {{ item.get_ecosystem_display }} {% if item.subcategory %}// {{ item.subcategory }}{% endif %}
+                        </span>
+                        <h2 class="project-title-text">{{ item.title }}</h2>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <!-- Demo Portfolio Grid Display -->
+            <div class="project-display-card" data-ecosystem="photography" data-subcategory="weddings">
+                <div class="card-media-wrapper" data-src="{% static 'images/portfolio/wed-1.jpg' %}" onclick="openLightbox(this)">
+                    <img src="{% static 'images/portfolio/wed-1.jpg' %}" alt="Luxury Wedding Cinema" class="project-card-image" loading="lazy" decoding="async" width="1024" height="1536">
+                </div>
+                <div class="project-metadata-mask">
+                    <div>
+                        <span class="project-category-stamp">Photography // Weddings</span>
+                        <h2 class="project-title-text">The Heritage Wedding Editorial</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-display-card wide-span" data-ecosystem="films" data-subcategory="being-human-nepal">
+                <div class="card-media-wrapper" data-src="{% static 'images/portfolio/film-1.jpg' %}" onclick="openLightbox(this)">
+                    <img src="{% static 'images/portfolio/film-1.jpg' %}" alt="Cinematic Film Highlights" class="project-card-image" loading="lazy" decoding="async" width="1024" height="1536">
+                </div>
+                <div class="project-metadata-mask">
+                    <div>
+                        <span class="project-category-stamp">Films // Being Human Nepal</span>
+                        <h2 class="project-title-text">Humanity Narrative Feature</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-display-card" data-ecosystem="photography" data-subcategory="first-rice-eating">
+                <div class="card-media-wrapper" data-src="{% static 'images/portfolio/rice-1.jpg' %}" onclick="openLightbox(this)">
+                    <img src="{% static 'images/portfolio/rice-1.jpg' %}" alt="Pasni Ceremony" class="project-card-image" loading="lazy" decoding="async" width="1024" height="1536">
+                </div>
+                <div class="project-metadata-mask">
+                    <div>
+                        <span class="project-category-stamp">Photography // First Rice Eating</span>
+                        <h2 class="project-title-text">Traditional Rice Feeding Ritual</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-display-card" data-ecosystem="design" data-subcategory="educational-consultancy">
+                <div class="card-media-wrapper" data-src="{% static 'images/portfolio/design-1.jpg' %}" onclick="openLightbox(this)">
+                    <img src="{% static 'images/portfolio/design-1.jpg' %}" alt="Branding Concept" class="project-card-image" loading="lazy" decoding="async" width="1024" height="1536">
+                </div>
+                <div class="project-metadata-mask">
+                    <div>
+                        <span class="project-category-stamp">Design & Animation // Educational Consultancy</span>
+                        <h2 class="project-title-text">Global Academic Campaign Design</h2>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+
+    <!-- Global Fullscreen Lightbox Overlay -->
+    <div class="gallery-lightbox-overlay" id="global-lightbox-modal" aria-hidden="true">
+        <div class="lightbox-utility-header">
+            <div class="lightbox-counter" id="lightbox-ui-counter">01 / 01</div>
+            
+            <div class="lightbox-actions-group">
+                <button class="lightbox-ui-btn" onclick="toggleZoom()" aria-label="Zoom Image">
+                    <i class="fa-solid fa-magnifying-glass-plus" id="zoom-icon"></i>
+                </button>
+                <button class="lightbox-ui-btn" onclick="closeLightbox()" aria-label="Close Lightbox">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <button class="lightbox-nav-arrow arrow-left" onclick="navigateSlider(-1)" aria-label="Previous Slide">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav-arrow arrow-right" onclick="navigateSlider(1)" aria-label="Next Slide">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="lightbox-viewport-stage" id="lightbox-stage" onclick="handleStageAmbientClick(event)">
+            <div class="lightbox-media-wrapper" id="lightbox-media-wrapper-node"></div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let activeMediaRegistry = [];
+    let currentActiveIndex = 0;
+    let currentEcosystem = 'all';
+    let currentSubcategory = 'all';
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const modalNode = document.getElementById('global-lightbox-modal');
+    const stageNode = document.getElementById('lightbox-media-wrapper-node');
+    const counterNode = document.getElementById('lightbox-ui-counter');
+    const subcategoryStrip = document.getElementById('subcategory-strip');
+
+    // Ecosystem Filter Logic
+    function setEcosystemFilter(ecosystemTarget, clickedButton) {
+        document.querySelectorAll('.filter-node-btn').forEach(btn => btn.classList.remove('active-filter-node'));
+        clickedButton.classList.add('active-filter-node');
+
+        currentEcosystem = ecosystemTarget;
+        
+        if (ecosystemTarget === 'films' || ecosystemTarget === 'design' || ecosystemTarget === 'dj-events') {
+            subcategoryStrip.style.display = 'none';
+        } else {
+            subcategoryStrip.style.display = 'flex';
+        }
+
+        applyMatrixFilters();
+    }
+
+    // Subcategory Filter Logic
+    function setSubcategoryFilter(subcategoryTarget, clickedButton) {
+        document.querySelectorAll('.sub-pill-btn').forEach(btn => btn.classList.remove('active-sub-pill'));
+        clickedButton.classList.add('active-sub-pill');
+
+        currentSubcategory = subcategoryTarget;
+        applyMatrixFilters();
+    }
+
+    // Grid Filter Matrix
+    function applyMatrixFilters() {
+        const cards = document.querySelectorAll('.project-display-card');
+        
+        cards.forEach(card => {
+            const cardEcosystem = card.getAttribute('data-ecosystem');
+            const cardSubcategory = card.getAttribute('data-subcategory');
+
+            const ecosystemMatch = (currentEcosystem === 'all' || cardEcosystem === currentEcosystem);
+            const subcategoryMatch = (currentSubcategory === 'all' || cardSubcategory === currentSubcategory);
+
+            if (ecosystemMatch && subcategoryMatch) {
+                card.style.display = 'flex';
+                requestAnimationFrame(() => { 
+                    card.style.opacity = '1'; 
+                    card.style.transform = 'translateY(0)'; 
+                });
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(12px)';
+                setTimeout(() => { card.style.display = 'none'; }, 300);
+            }
+        });
+
+        setTimeout(rebuildActiveMediaRegistry, 310);
+    }
+
+    // Rebuild Active Media Items
+    function rebuildActiveMediaRegistry() {
+        activeMediaRegistry = [];
+        const visibleWrappers = document.querySelectorAll('.project-display-card:not([style*="display: none"]) .card-media-wrapper');
+        
+        visibleWrappers.forEach((element, index) => {
+            const titleElem = element.closest('.project-display-card').querySelector('.project-title-text');
+            activeMediaRegistry.push({
+                src: element.getAttribute('data-src'),
+                title: titleElem ? titleElem.innerText : 'Studio Rishav Portfolio'
+            });
+            element.setAttribute('data-registry-index', index);
+        });
+    }
+
+    // Lightbox Controls & Stage Rendering
+    function openLightbox(elementAnchor) {
+        rebuildActiveMediaRegistry();
+        currentActiveIndex = parseInt(elementAnchor.getAttribute('data-registry-index')) || 0;
+        renderStageMediaContent();
+        
+        modalNode.style.display = 'flex';
+        modalNode.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function renderStageMediaContent() {
+        stageNode.innerHTML = '';
+        const activeAsset = activeMediaRegistry[currentActiveIndex];
+        if (!activeAsset) return;
+
+        counterNode.innerText = `${String(currentActiveIndex + 1).padStart(2, '0')} / ${String(activeMediaRegistry.length).padStart(2, '0')}`;
+
+        const imgElement = document.createElement('img');
+        imgElement.src = activeAsset.src;
+        imgElement.alt = activeAsset.title;
+        imgElement.className = 'lightbox-core-image';
+        imgElement.onclick = toggleZoom;
+        stageNode.appendChild(imgElement);
+    }
+
+    function toggleZoom() {
+        const img = stageNode.querySelector('.lightbox-core-image');
+        const zoomIcon = document.getElementById('zoom-icon');
+        if (img) {
+            img.classList.toggle('zoomed');
+            if (img.classList.contains('zoomed')) {
+                zoomIcon.className = 'fa-solid fa-magnifying-glass-minus';
+            } else {
+                zoomIcon.className = 'fa-solid fa-magnifying-glass-plus';
+            }
+        }
+    }
+
+    function navigateSlider(direction) {
+        currentActiveIndex += direction;
+        if (currentActiveIndex >= activeMediaRegistry.length) currentActiveIndex = 0;
+        if (currentActiveIndex < 0) currentActiveIndex = activeMediaRegistry.length - 1;
+        renderStageMediaContent();
+    }
+
+    function closeLightbox() {
+        modalNode.style.display = 'none';
+        modalNode.setAttribute('aria-hidden', 'true');
+        stageNode.innerHTML = '';
+        document.body.style.overflow = '';
+    }
+
+    function handleStageAmbientClick(e) {
+        if (e.target.id === 'lightbox-stage' || e.target.classList.contains('lightbox-viewport-stage')) {
+            closeLightbox();
+        }
+    }
+
+    // Touch Support for Mobile
+    modalNode.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    modalNode.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    }, { passive: true });
+
+    function handleSwipeGesture() {
+        if (touchEndX < touchStartX - 50) navigateSlider(1);
+        if (touchEndX > touchStartX + 50) navigateSlider(-1);
+    }
+
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (modalNode.style.display === 'flex') {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') navigateSlider(1);
+            if (e.key === 'ArrowLeft') navigateSlider(-1);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', rebuildActiveMediaRegistry);
+</script>
+{% endblock %}
