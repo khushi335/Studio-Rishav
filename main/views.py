@@ -18,6 +18,9 @@ def about(request):
 def services(request):
     return render(request,"main/services.html")
     
+def rishav_studio_portfolio(request):
+    return render(request,"main/rishav_studio_portfolio.html")
+    
 def photography(request):
     # Prefetch related images to optimize database queries
     categories = PhotographyCategory.objects.prefetch_related('images').all()
@@ -25,6 +28,22 @@ def photography(request):
     return render(request, 'main/photography.html', {
         'categories': categories
     })
+    
+def rishav_studio_photography(request):
+    items = PortfolioItem.objects.all()
+    
+    # Extract non-empty subcategories for dynamic pill filtering
+    raw_subcategories = PortfolioItem.objects.filter(ecosystem='photography')\
+        .values_list('subcategory', flat=True)\
+        .distinct()
+    
+    photo_subcategories = sorted(list(set(filter(None, raw_subcategories))))
+
+    context = {
+        'items': items,
+        'photo_subcategories': photo_subcategories,
+    }
+    return render(request, 'main/rishav_studio_photography.html', context)
     
 def photography_packages(request):
     packages = [
@@ -384,12 +403,28 @@ def custom_quote(request):
     ]
     return render(request, 'main/custom_quote.html', {'packages': packages})
 
-def portfolio(request):
-    # Fetch all uploaded portfolio items ordered by the newest uploads
-    items = PortfolioItem.objects.all().order_by('-created_at')
+# def portfolio(request):
+#     # Fetch all uploaded portfolio items ordered by the newest uploads
+#     items = PortfolioItem.objects.all().order_by('-created_at')
     
-    # Context variable 'items' matches the {% if items %} loop in portfolio.html
-    return render(request, 'main/portfolio.html', {'items': items})
+#     # Context variable 'items' matches the {% if items %} loop in portfolio.html
+#     return render(request, 'main/portfolio.html', {'items': items})
+
+def portfolio(request):
+    items = PortfolioItem.objects.all()
+    
+    # Extract non-empty subcategories for dynamic pill filtering
+    raw_subcategories = PortfolioItem.objects.filter(ecosystem='photography')\
+        .values_list('subcategory', flat=True)\
+        .distinct()
+    
+    photo_subcategories = sorted(list(set(filter(None, raw_subcategories))))
+
+    context = {
+        'items': items,
+        'photo_subcategories': photo_subcategories,
+    }
+    return render(request, 'main/portfolio.html', context)
 
 def contact(request):
     if request.method == 'POST':
