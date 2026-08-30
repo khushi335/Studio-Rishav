@@ -152,3 +152,4 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 ADMIN_EMAIL_LIST = config('ADMIN_EMAILS', default='foto.rishav@gmail.com,skhushi0218@gmail.com')
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
