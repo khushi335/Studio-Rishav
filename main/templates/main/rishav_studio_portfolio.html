@@ -1,0 +1,757 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Rishav Ojha — Photography, Cinematography & Visual Production{% endblock %}
+{% block meta_description %}Portfolio of Rishav Ojha — Photographer, Cinematographer, and Multidisciplinary Creative based in Sydney, Australia.{% endblock %}
+
+{% block extra_head %}
+<!-- Google Fonts: Bodoni Moda (Luxury Serif) & Inter (Clean Sans Serif) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bg-black: #000000;
+        --bg-secondary: #0A0A0A;
+        --bg-dark-gray: #121212;
+        --text-white: #FFFFFF;
+        --text-muted: #888888;
+        --text-dark-muted: #555555;
+        --border-gray: #222222;
+        --border-light: #333333;
+        --font-serif: 'Bodoni Moda', serif;
+        --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: var(--bg-black);
+        color: var(--text-white);
+        font-family: var(--font-sans);
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
+
+    /* Container System */
+    .container-editorial {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    /* Editorial Section Headers */
+    .editorial-label {
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--text-muted);
+        display: block;
+        margin-bottom: 24px;
+    }
+
+    .editorial-heading {
+        font-family: var(--font-serif);
+        font-size: clamp(36px, 5vw, 72px);
+        font-weight: 400;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin: 0 0 60px 0;
+        color: var(--text-white);
+    }
+
+    /* Hero Section */
+    .hero-wrapper {
+        padding: 140px 0 100px;
+        border-bottom: 1px solid var(--border-gray);
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 420px 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+
+    .hero-img-box {
+        width: 100%;
+        aspect-ratio: 4/5;
+        background-color: var(--bg-dark-gray);
+        border: 1px solid var(--border-gray);
+        overflow: hidden;
+    }
+
+    .hero-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%);
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    }
+
+    .hero-img-box:hover img {
+        transform: scale(1.03);
+        filter: grayscale(0%);
+    }
+
+    .hero-title {
+        font-family: var(--font-serif);
+        font-size: clamp(48px, 6vw, 96px);
+        font-weight: 400;
+        line-height: 0.95;
+        margin: 0 0 24px 0;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+    }
+
+    .hero-tagline {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(20px, 2.5vw, 32px);
+        color: var(--text-muted);
+        font-weight: 300;
+        margin-bottom: 40px;
+        line-height: 1.3;
+    }
+
+    .hero-bio-text {
+        font-size: 15px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        max-width: 680px;
+        font-weight: 300;
+        margin-bottom: 48px;
+    }
+
+    .hero-meta-bar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border-gray);
+        align-items: center;
+    }
+
+    .meta-col .meta-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--text-dark-muted);
+        margin-bottom: 6px;
+    }
+
+    .meta-col .meta-val {
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--text-white);
+        letter-spacing: 0.05em;
+    }
+
+    .btn-editorial-cta {
+        display: inline-block;
+        padding: 14px 24px;
+        border: 1px solid var(--text-white);
+        color: var(--bg-black);
+        background-color: var(--text-white);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn-editorial-cta:hover {
+        background-color: transparent;
+        color: var(--text-white);
+    }
+
+    /* Selected Brands Ribbon */
+    .brands-section {
+        padding: 80px 0;
+        border-bottom: 1px solid var(--border-gray);
+    }
+
+    .brands-flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px 48px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand-item {
+        font-family: var(--font-serif);
+        font-size: 20px;
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+        transition: color 0.3s ease;
+    }
+
+    .brand-item:hover {
+        color: var(--text-white);
+    }
+
+    /* Capabilities Section */
+    .capabilities-section {
+        padding: 120px 0;
+        border-bottom: 1px solid var(--border-gray);
+    }
+
+    .capabilities-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+    }
+
+    .capability-card {
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-gray);
+        padding: 40px 32px;
+        transition: border-color 0.4s ease;
+    }
+
+    .capability-card:hover {
+        border-color: var(--border-light);
+    }
+
+    .capability-card-title {
+        font-family: var(--font-serif);
+        font-size: 24px;
+        font-weight: 400;
+        margin: 0 0 32px 0;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border-gray);
+    }
+
+    .capability-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .capability-list li {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--text-muted);
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    /* Projects Editorial Stack */
+    .projects-section {
+        padding: 120px 0;
+        border-bottom: 1px solid var(--border-gray);
+    }
+
+    .project-card-editorial {
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-gray);
+        padding: 48px;
+        margin-bottom: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 48px;
+        align-items: center;
+        transition: border-color 0.4s ease;
+    }
+
+    .project-card-editorial:hover {
+        border-color: var(--border-light);
+    }
+
+    .project-media-box {
+        width: 100%;
+        aspect-ratio: 16/10;
+        background-color: var(--bg-dark-gray);
+        border: 1px solid var(--border-gray);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .project-media-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .project-card-editorial:hover .project-media-box img {
+        transform: scale(1.04);
+    }
+
+    .project-header-flex {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+
+    .project-title {
+        font-family: var(--font-serif);
+        font-size: clamp(28px, 3vw, 38px);
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tag-badge {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        padding: 6px 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-gray);
+        border-radius: 999px;
+        color: var(--text-muted);
+    }
+
+    .project-desc {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        font-weight: 300;
+        margin-bottom: 28px;
+    }
+
+    .deliverables-title {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--text-dark-muted);
+        margin-bottom: 12px;
+    }
+
+    .deliverables-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .deliverable-tag {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border-gray);
+        border-radius: 999px;
+        padding: 6px 14px;
+        font-size: 11px;
+        letter-spacing: 0.05em;
+        color: var(--text-white);
+    }
+
+    /* Formats & Aerial Section */
+    .formats-section {
+        padding: 120px 0;
+        border-bottom: 1px solid var(--border-gray);
+    }
+
+    .editorial-cloud-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+        margin-bottom: 80px;
+    }
+
+    .cloud-box {
+        border: 1px solid var(--border-gray);
+        padding: 24px;
+        text-align: center;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--text-muted);
+        background-color: var(--bg-secondary);
+        transition: all 0.3s ease;
+    }
+
+    .cloud-box:hover {
+        border-color: var(--text-white);
+        color: var(--text-white);
+    }
+
+    /* Philosophy Section */
+    .philosophy-section {
+        padding: 120px 0;
+    }
+
+    .philosophy-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+
+    .philosophy-card {
+        border-top: 1px solid var(--border-gray);
+        padding-top: 32px;
+    }
+
+    .philosophy-num {
+        font-family: var(--font-serif);
+        font-size: 16px;
+        color: var(--text-dark-muted);
+        margin-bottom: 16px;
+        display: block;
+    }
+
+    .philosophy-title {
+        font-family: var(--font-serif);
+        font-size: 22px;
+        font-weight: 400;
+        margin: 0 0 16px 0;
+    }
+
+    .philosophy-text {
+        font-size: 13px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        font-weight: 300;
+        margin: 0;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1200px) {
+        .capabilities-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .philosophy-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .hero-meta-bar {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 900px) {
+        .hero-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .hero-img-box {
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .project-card-editorial {
+            grid-template-columns: 1fr;
+            padding: 32px;
+            gap: 32px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .container-editorial {
+            padding: 0 20px;
+        }
+
+        .capabilities-grid,
+        .philosophy-grid,
+        .hero-meta-bar {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-editorial">
+
+    <!-- HERO SECTION -->
+    <section class="hero-wrapper">
+        <div class="hero-grid">
+            <div class="hero-img-box">
+                <img src="{% static 'images/portfolio/rishav_ojha.jpeg' %}" alt="Rishav Ojha">
+            </div>
+            <div>
+                <span class="editorial-label">Sydney, Australia</span>
+                <h1 class="hero-title">Rishav Ojha</h1>
+                <div class="hero-tagline">Visual Stories That Connect Brands With People.</div>
+                <p class="hero-bio-text">
+                    I'm Rishav Ojha, a photographer, cinematographer, and multidisciplinary creative specialising in commercial photography, cinematic video production, and digital content. With extensive experience across photography, cinematography, editing, graphic design, and visual storytelling, I help businesses and brands transform ideas into polished visual content designed for digital, social, and commercial platforms.
+                </p>
+                <div class="hero-meta-bar">
+                    <div class="meta-col">
+                        <div class="meta-label">Specialisation</div>
+                        <div class="meta-val">Photo & Video Production</div>
+                    </div>
+                    <div class="meta-col">
+                        <div class="meta-label">Socials</div>
+                        <div class="meta-val">@fotoRishav | studio.Rishav</div>
+                    </div>
+                    <div class="meta-col">
+                        <div class="meta-label">Portfolio Domain</div>
+                        <div class="meta-val">studiorishav.com</div>
+                    </div>
+                    <div class="meta-col">
+                        <a href="{% url 'contact' %}" class="btn-editorial-cta">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELECTED BRANDS RIBBON -->
+    <section class="brands-section">
+        <span class="editorial-label">Select Collaborations & Clients</span>
+        <div class="brands-flex">
+            <div class="brand-item">Being Human Clothing</div>
+            <div class="brand-item">Malabar Gold & Diamonds</div>
+            <div class="brand-item">Miss Multiverse Australia</div>
+            <div class="brand-item">Masterton Homes</div>
+            <div class="brand-item">TEDx Birgunj</div>
+            <div class="brand-item">OSR Digital</div>
+        </div>
+    </section>
+
+    <!-- CAPABILITIES SECTION -->
+    <section class="capabilities-section">
+        <span class="editorial-label">Capabilities</span>
+        <h2 class="editorial-heading">What I Do</h2>
+
+        <div class="capabilities-grid">
+            <div class="capability-card">
+                <h3 class="capability-card-title">Photography</h3>
+                <ul class="capability-list">
+                    <li>Commercial Photography</li>
+                    <li>Brand Campaigns</li>
+                    <li>Food & Hospitality</li>
+                    <li>Fashion & Lifestyle</li>
+                    <li>Corporate Photography</li>
+                    <li>Events</li>
+                    <li>Portraits</li>
+                    <li>Product Photography</li>
+                </ul>
+            </div>
+
+            <div class="capability-card">
+                <h3 class="capability-card-title">Video Production</h3>
+                <ul class="capability-list">
+                    <li>Commercial Videos</li>
+                    <li>Brand Films</li>
+                    <li>Cinematic Content</li>
+                    <li>Social Media Reels</li>
+                    <li>Promotional Videos</li>
+                    <li>Event Films</li>
+                    <li>Interviews</li>
+                    <li>Short-Form Content</li>
+                </ul>
+            </div>
+
+            <div class="capability-card">
+                <h3 class="capability-card-title">Aerial / Drone</h3>
+                <ul class="capability-list">
+                    <li>Cinematic Drone Photography</li>
+                    <li>Aerial Video</li>
+                    <li>Location Establishing Shots</li>
+                    <li>Real Estate & Hospitality</li>
+                    <li>Travel & Lifestyle Visuals</li>
+                </ul>
+            </div>
+
+            <div class="capability-card">
+                <h3 class="capability-card-title">Post-Production</h3>
+                <ul class="capability-list">
+                    <li>Video Editing</li>
+                    <li>Colour Grading</li>
+                    <li>Photo Retouching</li>
+                    <li>Motion Graphics</li>
+                    <li>Graphic Design</li>
+                    <li>Social Media Content</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section class="projects-section">
+        <span class="editorial-label">Portfolio</span>
+        <h2 class="editorial-heading">Featured Projects</h2>
+
+        <!-- Project 1 -->
+        <div class="project-card-editorial">
+            <div class="project-media-box">
+                <img src="{% static 'images/portfolio/being-human.jpg' %}" alt="Being Human Clothing Campaign">
+            </div>
+            <div>
+                <div class="project-header-flex">
+                    <h3 class="project-title">Being Human Clothing — Nepal</h3>
+                    <div class="project-tags">
+                        <span class="tag-badge">Photography</span>
+                        <span class="tag-badge">Cinematography</span>
+                        <span class="tag-badge">Graphic Design</span>
+                        <span class="tag-badge">Fashion Content</span>
+                    </div>
+                </div>
+                <p class="project-desc">
+                    Worked as a Photographer, Cinematographer, and Graphic Designer for Being Human Clothing, producing professional fashion photography, promotional videos, and creative marketing content for the brand's retail and digital presence in Nepal.
+                </p>
+                <div class="deliverables-title">Deliverables</div>
+                <div class="deliverables-grid">
+                    <div class="deliverable-tag">Fashion Campaign Photography</div>
+                    <div class="deliverable-tag">Model & Lifestyle Photography</div>
+                    <div class="deliverable-tag">Product Photography</div>
+                    <div class="deliverable-tag">Cinematic Promotional Videos</div>
+                    <div class="deliverable-tag">Social Media Content</div>
+                    <div class="deliverable-tag">Campaign Graphics</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card-editorial">
+            <div class="project-media-box">
+                <img src="{% static 'images/portfolio/lappan-chappan.jpg' %}" alt="Lappan Chappan 2 Film Visuals">
+            </div>
+            <div>
+                <div class="project-header-flex">
+                    <h3 class="project-title">Lappan Chappan 2 — Feature Film</h3>
+                    <div class="project-tags">
+                        <span class="tag-badge">Film Photography</span>
+                        <span class="tag-badge">Poster Design</span>
+                        <span class="tag-badge">Creative Production</span>
+                    </div>
+                </div>
+                <p class="project-desc">
+                    Media production in association with Mac Media. Contributed to the visual production and promotional identity of the feature film Lappan Chappan 2 as part of the creative production team.
+                </p>
+                <div class="deliverables-title">Role & Deliverables</div>
+                <div class="deliverables-grid">
+                    <div class="deliverable-tag">Film Photographer</div>
+                    <div class="deliverable-tag">Poster Photographer</div>
+                    <div class="deliverable-tag">Poster Designer</div>
+                    <div class="deliverable-tag">Promotional Media Production</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card-editorial">
+            <div class="project-media-box">
+                <img src="{% static 'images/portfolio/malabar-gold.jpg' %}" alt="Malabar Gold & Diamonds Sydney">
+            </div>
+            <div>
+                <div class="project-header-flex">
+                    <h3 class="project-title">Malabar Gold & Diamonds — Sydney</h3>
+                    <div class="project-tags">
+                        <span class="tag-badge">Cinematography</span>
+                        <span class="tag-badge">Luxury Brand Content</span>
+                    </div>
+                </div>
+                <p class="project-desc">
+                    Worked as a Cinematographer for Malabar Gold & Diamonds, producing premium visual content focused on jewellery, luxury lifestyle, brand presentation, and promotional storytelling across showroom grand launches in Australia.
+                </p>
+                <div class="deliverables-title">Deliverables</div>
+                <div class="deliverables-grid">
+                    <div class="deliverable-tag">Cinematic Brand Content</div>
+                    <div class="deliverable-tag">Jewellery Video Production</div>
+                    <div class="deliverable-tag">Promotional Videos</div>
+                    <div class="deliverable-tag">Social Media Content</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card-editorial">
+            <div class="project-media-box">
+                <img src="{% static 'images/portfolio/hospitality-campaigns.jpg' %}" alt="Hospitality Visuals Sydney">
+            </div>
+            <div>
+                <div class="project-header-flex">
+                    <h3 class="project-title">Hospitality Campaigns (Har Bar, Babli, Maicha)</h3>
+                    <div class="project-tags">
+                        <span class="tag-badge">Commercial</span>
+                        <span class="tag-badge">Food Photography</span>
+                        <span class="tag-badge">Design</span>
+                    </div>
+                </div>
+                <p class="project-desc">
+                    Produced food photography, atmosphere stills, cinematic promotional films, digital menu content, and campaign posters for Har Bar Indian Restaurant, Babli Indian Restaurant, and Maicha Nepalese Restaurant in Sydney.
+                </p>
+                <div class="deliverables-title">Deliverables</div>
+                <div class="deliverables-grid">
+                    <div class="deliverable-tag">Commercial Food Photography</div>
+                    <div class="deliverable-tag">Restaurant Promotional Films</div>
+                    <div class="deliverable-tag">Digital Menu Content</div>
+                    <div class="deliverable-tag">Campaign Posters</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- CONTENT FORMATS & AERIAL PERSPECTIVE -->
+    <section class="formats-section">
+        <span class="editorial-label">Cinematography & Social Content</span>
+        <h2 class="editorial-heading">Content Formats</h2>
+        <div class="editorial-cloud-grid">
+            <div class="cloud-box">Reels</div>
+            <div class="cloud-box">TikTok</div>
+            <div class="cloud-box">Campaign Films</div>
+            <div class="cloud-box">Brand Stories</div>
+            <div class="cloud-box">Events</div>
+            <div class="cloud-box">Commercials</div>
+        </div>
+
+        <span class="editorial-label">Drone & Aerial Perspective</span>
+        <h2 class="editorial-heading">Aerial Suitable For</h2>
+        <div class="editorial-cloud-grid">
+            <div class="cloud-box">Tourism</div>
+            <div class="cloud-box">Hospitality</div>
+            <div class="cloud-box">Automotive</div>
+            <div class="cloud-box">Lifestyle</div>
+            <div class="cloud-box">Events</div>
+            <div class="cloud-box">Property</div>
+            <div class="cloud-box">Brand Films</div>
+            <div class="cloud-box">Social Campaigns</div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY / WHY WORK WITH ME -->
+    <section class="philosophy-section">
+        <span class="editorial-label">Philosophy</span>
+        <h2 class="editorial-heading">Why Work With Me?</h2>
+
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <span class="philosophy-num">01</span>
+                <h3 class="philosophy-title">One Creative Partner</h3>
+                <p class="philosophy-text">Photography, cinematography, drone, editing, and design under one seamless workflow.</p>
+            </div>
+            <div class="philosophy-card">
+                <span class="philosophy-num">02</span>
+                <h3 class="philosophy-title">Commercial + Creative</h3>
+                <p class="philosophy-text">Content created to look visually strong while actively supporting client marketing objectives.</p>
+            </div>
+            <div class="philosophy-card">
+                <span class="philosophy-num">03</span>
+                <h3 class="philosophy-title">End-to-End Production</h3>
+                <p class="philosophy-text">From concept development and planning through shooting, post-production editing, and final delivery.</p>
+            </div>
+            <div class="philosophy-card">
+                <span class="philosophy-num">04</span>
+                <h3 class="philosophy-title">Social-First Capability</h3>
+                <p class="philosophy-text">Vertical and horizontal content crafted specifically for Instagram, TikTok, websites, and advertising platforms.</p>
+            </div>
+            <div class="philosophy-card">
+                <span class="philosophy-num">05</span>
+                <h3 class="philosophy-title">International Experience</h3>
+                <p class="philosophy-text">Proven track record working across multiple global markets, high-profile brands, and diverse industries.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
