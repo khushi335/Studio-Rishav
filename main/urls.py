@@ -14,7 +14,9 @@ urlpatterns = [
     path('services/dj-entertainment/', dj_packages, name='dj_packages'),
     path('services/custom-quote/', custom_quote, name='custom_quote'),
     path("portfolio/",portfolio,name="portfolio"),
+    path("rishav_studio_portfolio/",rishav_studio_portfolio,name="rishav_studio_portfolio"),
     path("photography/",photography,name="photography"),
+    path("rishav_studio_photography/",rishav_studio_photography,name="rishav_studio_photography"),
     path("contact/",contact,name="contact"),
     path('blog/',blog_list, name='blog_list'),
 ]
