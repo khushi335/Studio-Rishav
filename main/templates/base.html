@@ -131,9 +131,9 @@
             <nav class="hidden lg:flex items-center gap-8 xl:gap-10 text-[12px] tracking-[0.25em] uppercase font-medium text-gray-300">
                 <a href="{% url 'index' %}" class="hover:text-white transition-colors duration-300 {% if request.path == '/' %}text-white border-b border-white pb-1{% endif %}">Home</a>
                 <a href="{% url 'about' %}" class="hover:text-white transition-colors duration-300 {% if '/about/' in request.path %}text-white border-b border-white pb-1{% endif %}">About</a>
-                <a href="{% url 'portfolio' %}" class="hover:text-white transition-colors duration-300 {% if '/portfolio/' in request.path %}text-white border-b border-white pb-1{% endif %}">Portfolio</a>
+                <a href="{% url 'rishav_studio_portfolio' %}" class="hover:text-white transition-colors duration-300 {% if '/portfolio/' in request.path %}text-white border-b border-white pb-1{% endif %}">Portfolio</a>
                 <a href="{% url 'services' %}" class="hover:text-white transition-colors duration-300 {% if '/services/' in request.path %}text-white border-b border-white pb-1{% endif %}">Services</a>
-                <a href="{% url 'photography' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Photography</a>
+                <a href="{% url 'rishav_studio_photography' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Photography</a>
                 <a href="{% url 'blog_list' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Journal</a>
                 <!--<a href="{% url 'contact' %}" class="hover:text-white transition-colors duration-300 {% if '/contact/' in request.path %}text-white border-b border-white pb-1{% endif %}">Contact</a>-->
             </nav>
@@ -155,9 +155,9 @@
             <nav class="flex flex-col gap-8 text-3xl font-light tracking-widest heading-premium">
                 <a href="{% url 'index' %}" class="text-white hover:translate-x-2 transition-transform duration-300">Home</a>
                 <a href="{% url 'about' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">About</a>
-                <a href="{% url 'portfolio' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Portfolio</a>
+                <a href="{% url 'rishav_studio_portfolio' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Portfolio</a>
                 <a href="{% url 'services' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Services</a>
-                <a href="{% url 'photography' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Photography</a>
+                <a href="{% url 'rishav_studio_photography' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Photography</a>
                 <a href="{% url 'blog_list' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Journal</a>
                 <a href="{% url 'contact' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Contact</a>
             </nav>
@@ -206,9 +206,9 @@
             <ul class="space-y-3 text-xs tracking-widest uppercase text-gray-400 font-medium">
                 <li><a href="{% url 'index' %}" class="hover:text-white transition-colors duration-300">Home</a></li>
                 <li><a href="{% url 'about' %}" class="hover:text-white transition-colors duration-300">About</a></li>
-                <li><a href="{% url 'portfolio' %}" class="hover:text-white transition-colors duration-300">Portfolio</a></li>
+                <li><a href="{% url 'rishav_studio_portfolio' %}" class="hover:text-white transition-colors duration-300">Portfolio</a></li>
                 <li><a href="{% url 'services' %}" class="hover:text-white transition-colors duration-300">Services</a></li>
-                <li><a href="{% url 'photography' %}" class="hover:text-white transition-colors duration-300">Photography</a></li>
+                <li><a href="{% url 'rishav_studio_photography' %}" class="hover:text-white transition-colors duration-300">Photography</a></li>
                 <li><a href="{% url 'blog_list' %}" class="hover:text-white transition-colors duration-300">Journal</a></li>
                 <li><a href="{% url 'contact' %}" class="hover:text-white transition-colors duration-300">Contact</a></li>
             </ul>
