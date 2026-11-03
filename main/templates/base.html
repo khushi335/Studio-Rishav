@@ -26,6 +26,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Linked External Style Sheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -42,35 +46,21 @@
     </script>
 
     <style>
-        body {
-            background-color: #000000;
-            color: #FFFFFF;
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-        .heading-premium {
-            font-family: 'Cormorant Garamond', serif !important;
-            letter-spacing: -0.01em;
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #222222;
-            border-radius: 2px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #FFFFFF;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        /* ==========================================================================
+           MOBILE MENU VIEWPORT FIX & OVERLAY CONFINEMENT
+           ========================================================================== */
+        @media (max-width: 1023px) {
+            #mobile-menu:not(.hidden) {
+                top: 80px; /* Matches header height perfectly */
+                height: calc(100vh - 80px);
+                height: calc(100dvh - 80px); /* Dynamic viewport height for modern mobile browsers */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding-top: 1.5rem;
+                padding-bottom: 2rem;
+                overflow-y: auto;
+            }
         }
     </style>
 
@@ -82,7 +72,7 @@
       "image": "{% static 'images/rishav_studio_logo.jpeg' %}",
       "url": "https://studiorishav.com",
       "telephone": "+61452320935",
-      "email": "foto.rishav@gmail.com",
+      "email": "info@studiorishav.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "87 Frederick Street",
@@ -107,10 +97,10 @@
         <div class="flex items-center gap-4">
             <a href="tel:+61452320935" class="hover:text-white font-medium transition-colors duration-300">+61 452 320 935</a>
             <span class="text-[#333333]">|</span>
-            <a href="mailto:foto.rishav@gmail.com" class="hover:text-white transition-colors duration-300 lowercase tracking-normal font-medium">foto.rishav@gmail.com</a>
+            <a href="mailto:info@studiorishav.com" class="hover:text-white transition-colors duration-300 lowercase tracking-normal font-medium">info@studiorishav.com</a>
         </div>
         <div class="hidden md:block font-normal text-gray-200 tracking-[0.25em] text-[10px]">
-            Creating Stories Beyond Frames
+            Studio Rishav
         </div>
         <div class="text-right tracking-widest font-medium text-[10px] text-gray-400">
             Sydney, NSW Australia
@@ -118,52 +108,57 @@
     </div>
 
     <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-[#1F1F1F] transition-all duration-300">
-        <div class="max-w-[1600px] mx-auto px-6 sm:px-12 h-24 flex justify-between items-center">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 h-20 flex justify-between items-center">
             
-            <a href="{% url 'index' %}" class="flex items-center gap-4 group">
-                <img src="{% static 'images/logo_rishav_studio.png' %}" alt="Studio Rishav Logo" class="h-12 w-auto object-contain brightness-100 group-hover:opacity-90 transition-opacity duration-300">
-                <div class="flex flex-col border-l border-[#2A2A2A] pl-4">
-                    <span class="heading-premium text-xl sm:text-2xl font-light tracking-[0.15em] uppercase text-white leading-none">Studio Rishav</span>
-                    <span class="text-[8px] tracking-[0.45em] uppercase text-gray-400 mt-1 pl-0.5 group-hover:text-white transition-colors duration-500">Creative House</span>
-                </div>
+            <!-- Compact Brand Logo Container -->
+            <a href="{% url 'index' %}" class="inline-flex flex-col items-center group py-1 transition-transform duration-300 hover:scale-[0.98]">
+                <!-- Logo Image -->
+                <img src="{% static 'images/logo_rishav_studio.png' %}" alt="Studio Rishav Logo" class="h-8 sm:h-9 md:h-10 w-auto object-contain brightness-100 group-hover:opacity-95 transition-opacity duration-300">
+                
+                <!-- Subtitle Stacked Directly Beneath with Tight Spacing -->
+                <span class="text-[7px] sm:text-[7.5px] tracking-[0.38em] uppercase text-gray-400 mt-1 pl-0.5 group-hover:text-white transition-colors duration-300 text-center leading-none">
+                    Creative House
+                </span>
             </a>
 
+            <!-- Desktop Navigation Bar -->
             <nav class="hidden lg:flex items-center gap-8 xl:gap-10 text-[12px] tracking-[0.25em] uppercase font-medium text-gray-300">
                 <a href="{% url 'index' %}" class="hover:text-white transition-colors duration-300 {% if request.path == '/' %}text-white border-b border-white pb-1{% endif %}">Home</a>
                 <a href="{% url 'about' %}" class="hover:text-white transition-colors duration-300 {% if '/about/' in request.path %}text-white border-b border-white pb-1{% endif %}">About</a>
-                <a href="{% url 'rishav_studio_portfolio' %}" class="hover:text-white transition-colors duration-300 {% if '/portfolio/' in request.path %}text-white border-b border-white pb-1{% endif %}">Portfolio</a>
+                <a href="{% url 'rishav_studio_portfolio' %}" class="hover:text-white transition-colors duration-300 {% if '/portfolio/' in request.path %}text-white border-b border-white pb-1{% endif %}">Work</a>
                 <a href="{% url 'services' %}" class="hover:text-white transition-colors duration-300 {% if '/services/' in request.path %}text-white border-b border-white pb-1{% endif %}">Services</a>
-                <a href="{% url 'rishav_studio_photography' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Photography</a>
+                <a href="{% url 'rishav_studio_photography' %}" class="hover:text-white transition-colors duration-300 {% if '/photography/' in request.path %}text-white border-b border-white pb-1{% endif %}">Photography</a>
                 <a href="{% url 'blog_list' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Journal</a>
-                <!--<a href="{% url 'contact' %}" class="hover:text-white transition-colors duration-300 {% if '/contact/' in request.path %}text-white border-b border-white pb-1{% endif %}">Contact</a>-->
             </nav>
 
+            <!-- Desktop Action Call -->
             <div class="hidden lg:flex items-center gap-6">
                 <a href="{% url 'contact' %}" class="text-[11px] uppercase tracking-[0.2em] border border-white px-7 py-3 bg-white text-black hover:bg-transparent hover:text-white transition-all duration-500 font-semibold">
                     Book Consultation
                 </a>
             </div>
 
-            <button id="mobile-menu-btn" class="lg:hidden flex flex-col justify-center items-end w-8 h-8 gap-1.5 focus:outline-none group" aria-label="Toggle Navigation Menu">
-                <span id="line1" class="w-8 h-[1.5px] bg-white transition-all duration-300"></span>
-                <span id="line2" class="w-6 h-[1.5px] bg-white transition-all duration-300"></span>
-                <span id="line3" class="w-7 h-[1.5px] bg-white transition-all duration-300"></span>
+            <!-- Mobile Menu Toggle Button (Starts Closed) -->
+            <button id="mobile-menu-btn" class="lg:hidden flex flex-col justify-center items-end w-8 h-8 gap-1.5 focus:outline-none group z-50" aria-label="Toggle Navigation Menu">
+                <span id="line1" class="w-7 h-[1.5px] bg-white transition-all duration-300 origin-center"></span>
+                <span id="line2" class="w-5 h-[1.5px] bg-white transition-all duration-300"></span>
+                <span id="line3" class="w-6 h-[1.5px] bg-white transition-all duration-300 origin-center"></span>
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden fixed inset-x-0 top-[153px] bottom-0 bg-black z-40 flex flex-col px-8 py-12 justify-between border-t border-[#1F1F1F] overflow-y-auto animate-fade-in">
-            <nav class="flex flex-col gap-8 text-3xl font-light tracking-widest heading-premium">
-                <a href="{% url 'index' %}" class="text-white hover:translate-x-2 transition-transform duration-300">Home</a>
-                <a href="{% url 'about' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">About</a>
-                <a href="{% url 'rishav_studio_portfolio' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Portfolio</a>
-                <a href="{% url 'services' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Services</a>
-                <a href="{% url 'rishav_studio_photography' %}" class="hover:text-white transition-colors duration-300 {% if '/blog/' in request.path %}text-white border-b border-white pb-1{% endif %}">Photography</a>
-                <a href="{% url 'blog_list' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Journal</a>
-                <a href="{% url 'contact' %}" class="text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300">Contact</a>
+        <!-- Responsive Mobile Overlay Menu (Strictly hidden by default using the 'hidden' class) -->
+        <div id="mobile-menu" class="hidden fixed inset-x-0 bg-black/98 backdrop-blur-2xl z-40 px-6 sm:px-10 border-t border-[#1F1F1F]">
+            <nav class="flex flex-col gap-3.5 sm:gap-4 text-xl sm:text-2xl font-light tracking-widest heading-premium pt-2">
+                <a href="{% url 'index' %}" class="mobile-link text-white hover:translate-x-2 transition-transform duration-300 py-1">Home</a>
+                <a href="{% url 'about' %}" class="mobile-link text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300 py-1">About</a>
+                <a href="{% url 'rishav_studio_portfolio' %}" class="mobile-link text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300 py-1">Work</a>
+                <a href="{% url 'services' %}" class="mobile-link text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300 py-1">Services</a>
+                <a href="{% url 'rishav_studio_photography' %}" class="mobile-link text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300 py-1">Photography</a>
+                <a href="{% url 'blog_list' %}" class="mobile-link text-gray-300 hover:text-white hover:translate-x-2 transition-transform duration-300 py-1">Journal</a>
             </nav>
-            <div class="flex flex-col gap-5 border-t border-[#1F1F1F] pt-8">
-                <a href="tel:+61452320935" class="text-sm tracking-widest uppercase text-gray-200 font-medium">+61 452 320 935</a>
-                <a href="{% url 'contact' %}" class="text-center text-xs uppercase bg-white text-black py-4 font-bold tracking-[0.25em]">
+            
+            <div class="pt-4 pb-6 border-t border-[#1F1F1F] mt-auto">
+                <a href="{% url 'contact' %}" class="mobile-link block text-center text-xs uppercase bg-white text-black py-3.5 font-bold tracking-[0.25em] hover:bg-gray-200 transition-colors">
                     Book Consultation
                 </a>
             </div>
@@ -195,7 +190,7 @@
                 <p class="text-gray-400">87 Frederick Street, 2131, NSW</p>
                 <div class="flex flex-col gap-1.5 pt-1">
                     <a href="tel:+61452320935" class="hover:text-white transition-colors duration-300 font-medium">+61 452 320 935</a>
-                    <a href="mailto:foto.rishav@gmail.com" class="hover:text-white transition-colors duration-300 lowercase text-gray-400">foto.rishav@gmail.com</a>
+                    <a href="mailto:info@studiorishav.com" class="hover:text-white transition-colors duration-300 lowercase text-gray-400">info@studiorishav.com</a>
                 </div>
             </div>
         </div>
@@ -219,9 +214,9 @@
             <p class="text-xs tracking-[0.2em] uppercase font-bold text-white border-b border-[#2A2A2A] pb-2">Packages</p>
             <ul class="space-y-2.5 text-xs tracking-widest uppercase text-gray-400 font-medium">
                 <li><a href="{% url 'photography_packages' %}" class="hover:text-white transition-colors duration-300"> Photography Packages</a></li>
-                <li><a href="{% url 'videography_packages' %}" class="hover:text-white transition-colors duration-300"> Videography Packages</a></li>
-                <li><a href="{% url 'editing_packages' %}" class="hover:text-white transition-colors duration-300"> Editing & Retouching</a></li>
-                <li><a href="{% url 'design_packages' %}" class="hover:text-white transition-colors duration-300"> Graphic Design & Branding</a></li>
+                <li><a href="{% url 'video_production_packages' %}" class="hover:text-white transition-colors duration-300"> Video Production Packages</a></li>
+                <li><a href="{% url 'post_production' %}" class="hover:text-white transition-colors duration-300"> Post Production</a></li>
+                <li><a href="{% url 'brand_and_design' %}" class="hover:text-white transition-colors duration-300"> Branding & Design</a></li>
                 <li><a href="{% url 'animation_packages' %}" class="hover:text-white transition-colors duration-300"> Animation Packages</a></li>
                 <li><a href="{% url 'social_content_packages' %}" class="hover:text-white transition-colors duration-300"> Social Media Content</a></li>
                 <li><a href="{% url 'dj_packages' %}" class="hover:text-white transition-colors duration-300"> DJ & Event Entertainment</a></li>
@@ -286,25 +281,61 @@
     </div>
 </footer>
 
-    <script>
+<!-- Robust Mobile Menu Toggle Handler Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const l1 = document.getElementById('line1');
-        const l2 = document.getElementById('line2');
-        const l3 = document.getElementById('line3');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden');
-            
-            l1.classList.toggle('rotate-45');
-            l1.classList.toggle('translate-y-[7.5px]');
-            l2.classList.toggle('opacity-0');
-            l3.classList.toggle('-rotate-45');
-            l3.classList.toggle('-translate-y-[7.5px]');
-            l3.classList.toggle('w-8');
-        });
-    </script>
+        function closeMenu() {
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+            if (line1) {
+                line1.classList.remove('rotate-45', 'translate-y-[7.5px]', 'w-7');
+                line1.classList.add('w-7');
+                line2.classList.remove('opacity-0');
+                line3.classList.remove('-rotate-45', '-translate-y-[7.5px]', 'w-7');
+                line3.classList.add('w-6');
+            }
+        }
+
+        function openMenu() {
+            if (mobileMenu) mobileMenu.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            if (line1) {
+                line1.classList.add('rotate-45', 'translate-y-[7.5px]', 'w-7');
+                line2.classList.add('opacity-0');
+                line3.classList.add('-rotate-45', '-translate-y-[7.5px]', 'w-7');
+            }
+        }
+
+        if (menuBtn && mobileMenu) {
+            // Force hidden on initial load
+            mobileMenu.classList.add('hidden');
+
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            // Automatically close the menu when any navigation link inside the menu is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+        }
+    });
+</script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>
