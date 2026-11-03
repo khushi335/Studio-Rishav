@@ -1,30 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Studio Rishav | Premium Photography, Cinematic Films & Elite DJ Entertainment Sydney{% endblock %}
+{% block title %}Studio Rishav | Premium Photography, Cinematic Films & Elite DJ Entertainment{% endblock %}
 
 {% block content %}
 <!-- SECTION 1: LUXURY CINEMATIC HERO SHOT (Netflix Inspired) -->
-<section class="relative w-full h-[90vh] md:h-screen overflow-hidden bg-black flex items-center justify-center">
-     <!--Immersive Background Image Frame -->
-    <div class="absolute inset-0 z-0">
-        <img src="{% static 'images/hero.jpg' %}" alt="Studio Rishav Luxury Wedding Cinema and Fashion Production Production Run" class="w-full h-full object-cover opacity-60 scale-105 transition-transform duration-1000 ease-out hover:scale-100">
-         <!--Overlay Layer for Deep Contrast Readability -->
-        <div class="absolute inset-0 bg-gradient-to-t from-brandBlack via-transparent to-brandBlack/40"></div>
+<section class="relative w-full min-h-[90vh] md:min-h-screen bg-black flex items-center justify-center py-20 overflow-hidden">
+    <!-- Immersive Background Image Frame -->
+    <div class="absolute inset-0 z-0 flex items-center justify-center p-4 md:p-8">
+        <img src="{% static 'images/France_1.png' %}" 
+             alt="Studio Rishav Luxury Wedding Cinema and Fashion Production" 
+             class="w-full h-full object-contain opacity-70 transition-transform duration-1000 ease-out hover:scale-105">
+        
+        <!-- Overlay Layer for Deep Contrast Readability -->
+        <div class="absolute inset-0 bg-gradient-to-t from-brandBlack via-brandBlack/30 to-brandBlack/60"></div>
     </div>
 
-     <!--Editorial Center-Aligned Typography (Vogue Inspired) -->
+    <!-- Editorial Center-Aligned Typography (Vogue Inspired) -->
     <div class="relative z-10 text-center px-6 max-w-5xl mx-auto space-y-6 md:space-y-8">
         <span class="text-xs md:text-sm tracking-[0.5em] uppercase text-gray-400 block animate-fade-in">
-            <!--Premium Creative House & Entertainment Studio-->
+            <!-- Premium Creative House & Entertainment Studio -->
         </span>
-        <h1 class="heading-premium text-5xl sm:text-7xl md:text-9xl font-light uppercase tracking-[0.1em] text-white leading-none">
+        <h1 class="heading-premium text-4xl sm:text-7xl md:text-9xl font-light uppercase tracking-[0.1em] text-white leading-none"style="font-family: 'DM Serif Display', serif;">
             Studio Rishav
         </h1>
-        <p class="text-sm md:text-base tracking-[0.25em] font-light max-w-2xl mx-auto text-gray-300 uppercase">
-            Creating Stories Beyond Frames
+        <p class="text-xs sm:text-sm md:text-base tracking-[0.25em] font-light max-w-2xl mx-auto text-gray-300 uppercase">
+            Cinematic Production Studio
         </p>
-        <div class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="/portfolio/" class="w-full sm:w-auto text-xs uppercase tracking-[0.25em] bg-white text-black px-10 py-4 font-medium hover:bg-transparent hover:text-white border border-white transition-all duration-500">
                 View Portfolio
             </a>
@@ -34,94 +37,11 @@
         </div>
     </div>
 
-     <!--Floating Core Branding Identifiers -->
-    <div class="hidden md:flex absolute bottom-12 left-12 z-10 items-center gap-4 text-[10px] tracking-[0.3em] uppercase text-gray-500">
-        <span>PHOTOGRAPHY</span> <span class="text-gray-700">•</span> <span>FILMS</span> <span class="text-gray-700">•</span> <span>RETOUCHING</span> <span class="text-gray-700">•</span> <span>ANIMATION</span> <span class="text-gray-700">•</span> <span>DJ EVENTS</span>
-    </div>
-</section>
-
-
-<!--<section class="relative w-full h-[90vh] md:h-screen overflow-hidden bg-black flex items-center justify-center group" id="hero-section">-->
-    
-    <!-- Facebook Reel Canvas Container -->
-<!--    <div id="video-wrapper" class="absolute inset-0 z-0 overflow-hidden flex items-center justify-center transition-transform duration-700 ease-out scale-105">-->
-        <!-- Facebook Embedded Player Iframe -->
-<!--        <iframe -->
-<!--            id="hero-fb-frame"-->
-<!--            src="https://www.facebook.com/plugins/dvr.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3997848770509472&show_text=false&autoplay=true&muted=true&controls=false" -->
-<!--            class="w-[120%] h-[120%] sm:w-[150%] sm:h-[150%] md:w-[130%] md:h-[130%] object-cover opacity-60 pointer-events-none transition-all duration-500"-->
-<!--            style="border:none;overflow:hidden;" -->
-<!--            scrolling="no" -->
-<!--            frameborder="0" -->
-<!--            allowfullscreen="true" -->
-<!--            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">-->
-<!--        </iframe>-->
-
-        <!-- Premium Vogue Monochrome Gradient Vignette -->
-<!--        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50 pointer-events-none z-10"></div>-->
-<!--    </div>-->
-
-    <!-- Editorial Center-Aligned Typography (Monochrome / High Contrast) -->
-<!--    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto space-y-6 md:space-y-8 select-none">-->
-<!--        <span class="text-[10px] sm:text-xs md:text-sm tracking-[0.4em] sm:tracking-[0.5em] uppercase text-gray-400 block animate-fade-in">-->
-<!--            Premium Creative House & Entertainment Studio-->
-<!--        </span>-->
-<!--        <h1 class="heading-premium text-4xl sm:text-7xl md:text-9xl font-light uppercase tracking-[0.1em] text-white leading-none drop-shadow-sm">-->
-<!--            Studio Rishav-->
-<!--        </h1>-->
-<!--        <p class="text-xs sm:text-sm md:text-base tracking-[0.2em] sm:tracking-[0.25em] font-light max-w-2xl mx-auto text-gray-300 uppercase">-->
-<!--            Creating Stories Beyond Frames-->
-<!--        </p>-->
-
-        <!-- Action Trigger Buttons -->
-<!--        <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">-->
-<!--            <a href="/portfolio/" class="w-full sm:w-auto text-xs uppercase tracking-[0.25em] bg-white text-black px-8 sm:px-10 py-4 font-medium hover:bg-transparent hover:text-white border border-white transition-all duration-500 text-center">-->
-<!--                View Portfolio-->
-<!--            </a>-->
-<!--            <a href="/contact/" class="w-full sm:w-auto text-xs uppercase tracking-[0.25em] border border-white/40 text-white px-8 sm:px-10 py-4 font-medium hover:border-white hover:bg-white/5 transition-all duration-500 text-center backdrop-blur-xs">-->
-<!--                Book Consultation-->
-<!--            </a>-->
-<!--        </div>-->
-<!--    </div>-->
-
-    <!-- Floating Minimalist Video Control Panel -->
-<!--    <div class="absolute bottom-6 right-6 sm:bottom-12 sm:right-12 z-20 flex items-center gap-2 sm:gap-3 bg-black/40 backdrop-blur-md p-1.5 sm:p-2 border border-white/10 rounded-full transition-opacity duration-300 opacity-80 hover:opacity-100">-->
-        
-        <!-- Toggle Play / Pause Overlay State -->
-<!--        <button id="btn-play-pause" aria-label="Toggle Play State" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-white hover:bg-white/10 transition-colors">-->
-<!--            <svg id="icon-pause" class="w-4 h-4 fill-current" viewBox="0 0 24 24">-->
-<!--                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>-->
-<!--            </svg>-->
-<!--            <svg id="icon-play" class="w-4 h-4 fill-current hidden" viewBox="0 0 24 24">-->
-<!--                <path d="M8 5v14l11-7z"/>-->
-<!--            </svg>-->
-<!--        </button>-->
-
-        <!-- Toggle Sound Overlay Pointer -->
-<!--        <button id="btn-mute" aria-label="Toggle Sound" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-white hover:bg-white/10 transition-colors">-->
-<!--            <svg id="icon-muted" class="w-4 h-4 fill-current" viewBox="0 0 24 24">-->
-<!--                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>-->
-<!--            </svg>-->
-<!--            <svg id="icon-unmuted" class="w-4 h-4 fill-current hidden" viewBox="0 0 24 24">-->
-<!--                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>-->
-<!--            </svg>-->
-<!--        </button>-->
-
-        <!-- Toggle Cinematic Zoom Scale -->
-<!--        <button id="btn-zoom" aria-label="Toggle Cinematic Zoom" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-white hover:bg-white/10 transition-colors">-->
-<!--            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">-->
-<!--                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>-->
-<!--            </svg>-->
-<!--        </button>-->
-<!--    </div>-->
-
     <!-- Floating Core Branding Identifiers -->
-<!--    <div class="hidden md:flex absolute bottom-12 left-12 z-10 items-center gap-4 text-[10px] tracking-[0.3em] uppercase text-gray-400 select-none">-->
-<!--        <span>PHOTOGRAPHY</span> <span class="text-gray-600">•</span> <span>FILMS</span> <span class="text-gray-600">•</span> <span>RETOUCHING</span> <span class="text-gray-600">•</span> <span>ANIMATION</span> <span class="text-gray-600">•</span> <span>DJ EVENTS</span>-->
-<!--    </div>-->
-<!--</section>-->
-
-
+    <div class="hidden md:flex absolute bottom-12 left-12 z-10 items-center gap-4 text-[10px] tracking-[0.3em] uppercase text-[#e5e5e5]">
+    <span>PHOTOGRAPHY</span> <span class="text-[#e5e5e5]">•</span> <span>BRAND CONTENT</span> <span class="text-[#e5e5e5]">•</span> <span>WEDDINGS</span> <span class="text-[#e5e5e5]">•</span> <span>FILMS</span> <span class="text-[#e5e5e5]">•</span> <span>DRONE / AERIAL</span> <span class="text-[#e5e5e5]">•</span> <span>EVENTS</span>
+</div>
+</section>
 
 <section class="relative w-full bg-black text-white py-12 sm:py-16 px-6 overflow-hidden border-t border-white/10" id="about-founder">
     
@@ -148,7 +68,7 @@
                         <div class="absolute bottom-4 left-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-full">
                             <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
                             <span class="text-[10px] tracking-[0.25em] uppercase text-gray-300 font-light">
-                                Sydney • Worldwide
+                                Sydney, Australia | Available Worldwide
                             </span>
                         </div>
                     </div>
@@ -166,9 +86,7 @@
                     <span class="text-[10px] sm:text-xs tracking-[0.4em] sm:tracking-[0.5em] uppercase text-gray-400 block font-light">
                         Behind the Vision
                     </span>
-                    <h2 class="heading-premium text-3xl sm:text-5xl md:text-6xl font-light uppercase tracking-[0.08em] leading-tight text-white">
-                        Meet the Founder
-                    </h2>
+                    <h2 class="heading-premium text-3xl sm:text-5xl md:text-6xl font-light uppercase tracking-[0.08em] leading-tight text-white"style="font-family: 'DM Serif Display', serif;">Meet the Founder</h2>
                     <div class="w-12 h-[1px] bg-white/40"></div>
                 </div>
 
@@ -178,10 +96,10 @@
                         Hi, I’m <span class="font-medium text-white underline underline-offset-8 decoration-white/30">Rishav</span>, founder of Studio Rishav.
                     </p>
                     <p>
-                        For over nine years, I've been creating premium photography, cinematic films, commercial campaigns, luxury weddings, and high-end visual experiences across Nepal and Australia.
+                        My journey in visual storytelling began in 2015. Since then, I’ve worked across photography, filmmaking, editing, design and creative production, creating visual content for weddings, brands, events and commercial campaigns across Nepal and Australia. 
                     </p>
                     <p class="text-gray-400 text-xs sm:text-sm tracking-wider">
-                        Driven by timeless storytelling and high-contrast editorial craft, my focus is capturing moments that elevate stories far beyond standard frames.
+                        My approach combines strong composition, authentic emotion and cinematic detail to create visuals that feel intentional, contemporary and memorable.
                     </p>
                 </div>
 
@@ -191,10 +109,10 @@
                     <!-- Stat 1 -->
                     <div class="space-y-1">
                         <h3 class="text-2xl sm:text-3xl font-light tracking-tight text-white">
-                            9<span class="text-gray-400 font-extralight">+</span>
+                            Since<span class="text-gray-400 font-extralight"></span>
                         </h3>
                         <p class="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-gray-400 font-light">
-                            Years Exp.
+                            2015
                         </p>
                     </div>
 
@@ -221,24 +139,14 @@
                     <!-- Stat 4 -->
                     <div class="space-y-1">
                         <h3 class="text-2xl sm:text-3xl font-light tracking-tight text-white">
-                            Global
+                            Worldwide 
                         </h3>
                         <p class="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-gray-400 font-light">
-                            Available
+                            Availability 
                         </p>
                     </div>
 
                 </div>
-
-                <!-- Direct CTA Action Link -->
-                <!--<div class="pt-4">-->
-                <!--    <a href="/about/" class="inline-flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-white hover:text-gray-300 transition-colors group">-->
-                <!--        <span>Discover Full Story</span>-->
-                <!--        <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24">-->
-                <!--            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>-->
-                <!--        </svg>-->
-                <!--    </a>-->
-                <!--</div>-->
 
             </div>
 
@@ -246,83 +154,13 @@
     </div>
 </section>
 
-
-<!-- SECTION 2: INTUITIVE BRAND STATEMENT (Apple × Vogue Asymmetric Layout) -->
-<!--<section class="py-12 md:py-20 bg-black px-6 sm:px-12 border-b border-[#1F1F1F] overflow-hidden" aria-labelledby="brand-philosophy-title">-->
-<!--    <div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">-->
-        
-        <!-- Left Column: Luxury Media Showcase (Vogue & Leica Inspired) -->
-<!--        <div class="lg:col-span-5 w-full">-->
-<!--            <div class="relative group w-full aspect-[4/5] bg-[#0A0A0A] overflow-hidden border border-[#1F1F1F]">-->
-                <!-- Technical SEO Image Optimization Container -->
-<!--                <img src="{% static 'images/portfolio/brand-philosophy-cinema.jpg' %}" -->
-<!--                     alt="Studio Rishav luxury cinematic film production set and premium high-end camera gear setup in Sydney NSW" -->
-<!--                     title="Studio Rishav — Luxury Visual Curation"-->
-<!--                     loading="lazy"-->
-<!--                     class="w-full h-full object-cover transition-transform duration-[1500ms] ease-out scale-100 group-hover:scale-105 filter grayscale contrast-[1.10] brightness-[0.90]">-->
-                
-                <!-- Apple-Style Translucent Dark Border Overlay overlaying image -->
-<!--                <div class="absolute inset-0 border border-white/5 pointer-events-none mix-blend-overlay"></div>-->
-                
-                <!-- Technical Data Watermark (Leica Aesthetic) -->
-<!--                <div class="absolute bottom-4 left-4 text-[9px] tracking-[0.25em] uppercase text-gray-400 font-medium bg-black/40 backdrop-blur-sm px-3 py-1.5 border border-white/10">-->
-<!--                    SYS: 35MM LENS // 4K 10-BIT FILM-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <!-- Right Column: Editorial Text Delivery Ecosystem (Apple × Netflix Copy Flow) -->
-<!--        <div class="lg:col-span-7 flex flex-col justify-center space-y-6 md:space-y-8">-->
-            
-            <!-- Index & Section Identity Marker -->
-<!--            <div class="flex items-center gap-3">-->
-<!--                <span class="w-2 h-[1px] bg-white"></span>-->
-<!--                <span id="brand-philosophy-title" class="text-[11px] tracking-[0.35em] uppercase text-gray-400 font-semibold">-->
-<!--                    01 // Brand Philosophy-->
-<!--                </span>-->
-<!--            </div>-->
-            
-            <!-- Main Editorial Header (Vogue / Cormorant Garamond Optimization) -->
-<!--            <h2 class="heading-premium text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white leading-[1.15] tracking-tight">-->
-<!--                We don't simply archive moments. We direct <span class="italic font-normal">timeless visual ecosystems</span> and cinematic masterworks.-->
-<!--            </h2>-->
-            
-            <!-- Structural Divider -->
-<!--            <div class="w-16 h-[1px] bg-[#2A2A2A]"></div>-->
-
-            <!-- Highly Optimized Core SEO Prose Block -->
-<!--            <p class="text-gray-300 text-sm md:text-base lg:text-[17px] leading-relaxed max-w-2xl font-normal normal-case tracking-wide">-->
-<!--                Operating high-end creative production units across Sydney, New South Wales, and premier global destinations, -->
-<!--                <strong class="text-white font-semibold">Studio Rishav</strong> (widely recognized as -->
-<!--                <strong class="text-white font-semibold">Foto Rishav</strong>) merges premium cinematic wedding videography, -->
-<!--                editorial fashion photography, and expert post-production retouching with elite corporate event DJ entertainment. -->
-<!--                We cater specifically to discerning clients who demand immaculate premium identity presentation, -->
-<!--                modern brand styling, and world-class digital storytelling.-->
-<!--            </p>-->
-
-            <!-- Interactive Navigation Vector -->
-<!--            <div class="pt-4">-->
-<!--                <a href="/portfolio/" class="inline-flex items-center gap-4 text-[11px] tracking-[0.25em] uppercase font-bold text-white group relative pb-1">-->
-<!--                    <span>Explore The Curation</span>-->
-                    <!-- Apple-inspired animated horizontal accent bar -->
-<!--                    <span class="absolute bottom-0 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full"></span>-->
-<!--                    <svg class="w-3 h-3 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
-<!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>-->
-<!--                    </svg>-->
-<!--                </a>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
 <!-- SECTION 3: THE EXPERIENTIAL PORTFOLIO GRID (Stark Luxury Showcase) -->
 <section class="py-12 md:py-20 bg-brandSecondaryBlack px-6 sm:px-12">
     <div class="max-w-[1600px] mx-auto space-y-16">
         <div class="flex flex-col md:flex-row justify-between items-baseline gap-4 border-b border-brandDarkGray pb-8">
             <div class="space-y-2">
-                <span class="text-xs tracking-[0.3em] uppercase text-gray-500 block">02 // Selected Archive</span>
-                <h3 class="heading-premium text-4xl font-light text-white uppercase tracking-wide">Featured Works</h3>
+                <span class="text-xs tracking-[0.3em] uppercase text-gray-500 block" style="font-family: 'DM Serif Display', serif;">02 // Selected Archive</span>
+                <h3 class="heading-premium text-4xl font-light text-white uppercase tracking-wide">Selected Work</h3>
             </div>
             <a href="/portfolio/" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-white border-b border-gray-700 pb-1 transition-all">
                 Browse Entire Catalog &rarr;
@@ -339,7 +177,7 @@
                 <div class="p-6 flex justify-between items-center bg-brandBlack">
                     <div>
                         <p class="text-xs uppercase tracking-widest text-gray-500 mb-1">Wedding Cinema / Editorial</p>
-                        <h4 class="heading-premium text-xl font-light text-white">The Eternity Symphony</h4>
+                        <h4 class="heading-premium text-xl font-light text-white">Sydney Harbour Wedding </h4>
                     </div>
                     <span class="text-xl font-light text-gray-600 group-hover:text-white transition-colors">&nearr;</span>
                 </div>
@@ -353,7 +191,7 @@
                 <div class="p-6 flex justify-between items-center bg-brandBlack">
                     <div>
                         <p class="text-xs uppercase tracking-widest text-gray-500 mb-1">Fashion Photography</p>
-                        <h4 class="heading-premium text-xl font-light text-white">Monochrome Mode</h4>
+                        <h4 class="heading-premium text-xl font-light text-white">Editorial Portrait Series </h4>
                     </div>
                     <span class="text-xl font-light text-gray-600 group-hover:text-white transition-colors">&nearr;</span>
                 </div>
@@ -367,7 +205,7 @@
                 <div class="p-6 flex justify-between items-center bg-brandBlack">
                     <div>
                         <p class="text-xs uppercase tracking-widest text-gray-500 mb-1">Elite Event Entertainment</p>
-                        <h4 class="heading-premium text-xl font-light text-white">Soundscapes After Dark</h4>
+                        <h4 class="heading-premium text-xl font-light text-white">Graduation Night </h4>
                     </div>
                     <span class="text-xl font-light text-gray-600 group-hover:text-white transition-colors">&nearr;</span>
                 </div>
@@ -383,8 +221,8 @@
         <!-- Header Matrix Section -->
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-[#1F1F1F] pb-8">
             <div>
-                <span class="text-[11px] tracking-[0.35em] uppercase text-gray-500 block mb-3 font-semibold">04 // Production Offerings</span>
-                <h3 id="offerings-title" class="heading-premium text-3xl sm:text-4xl md:text-5xl font-light text-white uppercase tracking-[0.05em]">Studio Curation Matrices</h3>
+                <span class="text-[11px] tracking-[0.35em] uppercase text-gray-500 block mb-3 font-semibold" style="font-family: 'DM Serif Display', serif;">04 // Production Offerings</span>
+                <h3 id="offerings-title" class="heading-premium text-3xl sm:text-4xl md:text-5xl font-light text-white uppercase tracking-[0.05em]">Production Services</h3>
             </div>
             <p class="text-gray-400 text-xs tracking-widest uppercase font-light max-w-xs leading-relaxed hidden md:block">
                 Multidisciplinary visual curation spanning across high-end commercial frameworks and luxury events.
@@ -405,9 +243,9 @@
                     <span class="absolute top-4 left-4 text-[10px] tracking-[0.25em] font-mono text-gray-400 bg-black/60 backdrop-blur-sm px-2.5 py-1">01 // VISUAL</span>
                 </div>
                 <div class="space-y-3">
-                    <h4 class="heading-premium text-2xl font-light text-white group-hover:text-gray-300 transition-colors duration-300">Premium Photography</h4>
+                    <h4 class="heading-premium text-2xl font-light text-white group-hover:text-gray-300 transition-colors duration-300">Photography</h4>
                     <p class="text-xs text-gray-400 font-light leading-relaxed uppercase tracking-wider">
-                        Luxury Wedding Cinema, Fine Art Editorial Fashion Catalogs, Haute Couture Portraits, High-End Landscapes, and Travel Documentaries.
+                        Editorial portraits, weddings, fashion, brands, products, hospitality and events.
                     </p>
                 </div>
             </div>
@@ -423,9 +261,9 @@
                     <span class="absolute top-4 left-4 text-[10px] tracking-[0.25em] font-mono text-gray-400 bg-black/60 backdrop-blur-sm px-2.5 py-1">02 // MOTION</span>
                 </div>
                 <div class="space-y-3">
-                    <h4 class="heading-premium text-2xl font-light text-white group-hover:text-gray-300 transition-colors duration-300">Cinematic Brand Photoshoot</h4>
+                    <h4 class="heading-premium text-2xl font-light text-white group-hover:text-gray-300 transition-colors duration-300">Film & Video Production</h4>
                     <p class="text-xs text-gray-400 font-light leading-relaxed uppercase tracking-wider">
-                        Commercial Product Advertising campaigns, High-Impact Brand Posters, Corporate Identity assets, Architectural property showcases, and Luxury Event highlights.
+                        Wedding films, brand films, commercial content, event films and social video. 
                     </p>
                 </div>
             </div>
@@ -441,9 +279,9 @@
                     <span class="absolute top-4 left-4 text-[10px] tracking-[0.25em] font-mono text-gray-400 bg-black/60 backdrop-blur-sm px-2.5 py-1">03 // ART</span>
                 </div>
                 <div class="space-y-3">
-                    <h4 class="heading-premium text-2xl font-light text-white group-hover:text-gray-300 transition-colors duration-300">Retouching & Design</h4>
+                    <h4 class="heading-premium text-2xl font-light text-white group-hover:text-gray-300 transition-colors duration-300">Post-Production</h4>
                     <p class="text-xs text-gray-400 font-light leading-relaxed uppercase tracking-wider">
-                        Pixel-Perfect Editorial Skin Retouching, High-End Image Manipulation, Premium Brand Strategy, Vector Graphic Design layout curation, and Motion Animations.
+                        Photo retouching, colour grading, video editing, motion graphics and sound finishing.
                     </p>
                 </div>
             </div>
@@ -459,9 +297,9 @@
                     <span class="absolute top-4 left-4 text-[10px] tracking-[0.25em] font-mono text-gray-400 bg-black/60 backdrop-blur-sm px-2.5 py-1">04 // AUDIO</span>
                 </div>
                 <div class="space-y-3">
-                    <h4 class="heading-premium text-2xl font-light text-white group-hover:text-gray-300 transition-colors duration-300">Elite DJ & Sound</h4>
+                    <h4 class="heading-premium text-2xl font-light text-white group-hover:text-gray-300 transition-colors duration-300">DJ & Event Entertainment </h4>
                     <p class="text-xs text-gray-400 font-light leading-relaxed uppercase tracking-wider">
-                        Luxury Wedding Receptions, High-Energy Corporate Gala Functions, VIP Private Parties, Premium Maternity & Lifestyle Soundscapes, and High-End Acoustic Curation.
+                        Weddings, private events, celebrations and corporate functions. 
                     </p>
                 </div>
             </div>
@@ -516,7 +354,7 @@
 
             <!-- Content Workspace Core -->
             <div class="space-y-8 my-auto py-12 lg:py-0">
-                <h3 id="cta-heading" class="heading-premium text-4xl sm:text-5xl xl:text-6xl font-light tracking-[0.02em] text-white uppercase leading-[1.05]">
+                <h3 id="cta-heading" class="heading-premium text-4xl sm:text-5xl xl:text-6xl font-light tracking-[0.02em] text-white uppercase leading-[1.05]" style="font-family: 'DM Serif Display', serif;">
                     Ready to <br class="hidden xl:block">
                     Create <br class="hidden xl:block">
                     Something <br>
@@ -560,31 +398,53 @@
             
             <!-- Section Header Tracker -->
             <div>
-                <span class="text-[11px] tracking-[0.35em] uppercase text-gray-500 block mb-3 font-semibold">06 // Executive Manifesto</span>
-                <h2 id="philosophy-title" class="heading-premium text-3xl sm:text-4xl md:text-5xl font-light text-white uppercase tracking-[0.05em] leading-tight">
-                    The Architecture <br class="hidden sm:block">of Visual Distinction
+                <span class="text-[11px] tracking-[0.35em] uppercase text-gray-500 block mb-3 font-semibold">06 // Creative Direction</span>
+                <h2 id="philosophy-title" class="heading-premium text-3xl sm:text-4xl md:text-5xl font-light text-white uppercase tracking-[0.05em] leading-tight" style="font-family: 'DM Serif Display', serif;">
+                    Our Approach
                 </h2>
             </div>
 
             <!-- Heavy Editorial Typography Statement -->
             <p class="heading-premium text-xl sm:text-2xl md:text-3xl font-light tracking-wide text-gray-300 leading-relaxed max-w-3xl">
-                We reject common imagery. Studio Rishav operates at the intersection of haute couture fashion documentation, elite event engineering, and modern cinematic commercial advertising.
+                Every project begins with an understanding of the story, audience and intended platform. From creative direction and production through editing and final delivery, Studio Rishav creates visual content with consistency, purpose and attention to detail. 
             </p>
+            
+            <!-- Three Strategic Pillars Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-[#1F1F1F]">
+                
+                <!-- Pillar 1 -->
+                <div class="space-y-3 p-5 rounded-lg bg-[#0D0D0E]/60 border border-[#1F1F1F] hover:border-white/20 transition-colors duration-300">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-mono text-gray-400">01</span>
+                        <h3 class="text-xs font-semibold text-white tracking-[0.2em] uppercase">Story First</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed tracking-wide">
+                        Visual direction built around emotion, purpose, and audience.
+                    </p>
+                </div>
 
-            <!-- Grid Sub-Metrics Checklist -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 border-t border-[#1F1F1F]">
-                <div class="space-y-2">
-                    <span class="text-xs font-mono text-white tracking-[0.2em] uppercase block">I / ARCHITECTURAL RIGOR</span>
-                    <p class="text-xs text-gray-400 font-light leading-relaxed uppercase tracking-wider">
-                        Every frame is curated with balanced structural geometry, balancing lighting ratios to present premium products, elite spaces, and high-fashion silhouettes exactly as intended.
+                <!-- Pillar 2 -->
+                <div class="space-y-3 p-5 rounded-lg bg-[#0D0D0E]/60 border border-[#1F1F1F] hover:border-white/20 transition-colors duration-300">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-mono text-gray-400">02</span>
+                        <h3 class="text-xs font-semibold text-white tracking-[0.2em] uppercase">Consistent Craft</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed tracking-wide">
+                        Thoughtful lighting, composition, colour, and sound.
                     </p>
                 </div>
-                <div class="space-y-2">
-                    <span class="text-xs font-mono text-white tracking-[0.2em] uppercase block">II / GLOBAL PRODUCTION SLOTS</span>
-                    <p class="text-xs text-gray-400 font-light leading-relaxed uppercase tracking-wider">
-                        Operating through highly synchronized creative structures, executing fine-art location runs seamlessly across Sydney, regional NSW, and global destination sets.
+
+                <!-- Pillar 3 -->
+                <div class="space-y-3 p-5 rounded-lg bg-[#0D0D0E]/60 border border-[#1F1F1F] hover:border-white/20 transition-colors duration-300">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-mono text-gray-400">03</span>
+                        <h3 class="text-xs font-semibold text-white tracking-[0.2em] uppercase">Platform Ready</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed tracking-wide">
+                        Final assets prepared for web, social, advertising, and print.
                     </p>
                 </div>
+
             </div>
 
         </div>
@@ -599,26 +459,7 @@
                      loading="lazy"
                      class="w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-transform duration-[1500ms] ease-out group-hover/canvas:scale-105 select-none pointer-events-none">
                 <!-- Outer Glassmorphic Edge Counter Badge -->
-                <span class="absolute bottom-4 right-4 text-[9px] font-mono tracking-[0.3em] text-white bg-black/70 backdrop-blur-md px-3 py-1.5 border border-white/10">
-                    EST. 2020 // SR ARCHIVE
-                </span>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
-            </div>
-
-            <!-- Big Number Stat Strip Panel -->
-            <div class="grid grid-cols-3 gap-4 pt-8 lg:pt-12 border-t border-[#1F1F1F] text-left">
-                <div>
-                    <span class="block text-4xl sm:text-5xl font-light text-white tracking-tight">100%</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-500 font-mono block mt-1">Bespoke Curation</span>
-                </div>
-                <div>
-                    <span class="block text-4xl sm:text-5xl font-light text-white tracking-tight">12+</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-500 font-mono block mt-1">Visual Genres</span>
-                </div>
-                <div>
-                    <span class="block text-4xl sm:text-5xl font-light text-white tracking-tight">K2</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-500 font-mono block mt-1">Mastery Optics</span>
-                </div>
             </div>
 
         </div>
@@ -633,15 +474,10 @@
         <!-- LEFT CANVAS: Singular High-Fashion Vertical Master Image (5 Columns) -->
         <div class="lg:col-span-5 bg-[#0A0A0A] relative min-h-[40vh] lg:min-h-full overflow-hidden group">
             <img src="{% static 'images/studio-pipeline.jpg' %}" 
-                 alt="Studio Rishav live editorial production workflow execution asset master" 
+                 alt="Studio Rishav production workflow execution" 
                  loading="lazy"
+                 decoding="async"
                  class="w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-transform duration-[1800ms] ease-out group-hover:scale-105 select-none pointer-events-none">
-            
-            <!-- Technical Overlay Data Tag -->
-            <div class="absolute bottom-6 left-6 z-10 flex flex-col space-y-1">
-                <span class="text-[9px] tracking-[0.4em] uppercase text-gray-400 font-mono">PIPELINE MONITOR // ARCHIVE</span>
-                <span class="text-[11px] tracking-[0.2em] uppercase text-white font-light">CORE METHODOLOGY</span>
-            </div>
             
             <!-- Structural Vignette Protective Gradient -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20 pointer-events-none"></div>
@@ -652,24 +488,23 @@
             
             <!-- Upper Section Heading Panel -->
             <div class="pb-8 border-b border-[#1F1F1F]">
-                <span class="text-[11px] tracking-[0.35em] uppercase text-gray-500 block mb-2 font-semibold">07 // Method & Blueprint</span>
-                <h2 id="pipeline-title" class="heading-premium text-3xl sm:text-4xl font-light text-white uppercase tracking-[0.05em]">The Execution Pipeline</h2>
+                <span class="text-[11px] tracking-[0.35em] uppercase text-gray-500 block mb-2 font-semibold">07 // Method & Workflow</span>
+                <h2 id="pipeline-title" class="heading-premium text-3xl sm:text-4xl font-light text-white uppercase tracking-[0.05em]" style="font-family: 'DM Serif Display', serif;">HOW WE WORK</h2>
             </div>
 
             <!-- Pipeline Pattern Rows -->
-            <div class="w-full my-auto py-8 lg:py-6 space-y-2">
+            <div class="w-full my-auto py-8 lg:py-6 space-y-3">
                 
                 <!-- Pattern 01 -->
                 <div class="group/row relative w-full flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 border border-[#1F1F1F] bg-[#050505] transition-all duration-300 hover:border-gray-700">
-                    <!-- Left Accent Sliding Indicator Line -->
                     <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-white scale-y-0 transition-transform duration-300 group-hover/row:scale-y-100"></div>
                     
                     <div class="flex items-center gap-6">
                         <span class="text-[10px] font-mono text-gray-600 group-hover/row:text-white transition-colors duration-300">_01</span>
-                        <h3 class="heading-premium text-lg font-light text-white uppercase tracking-wide">Curation Architecture</h3>
+                        <h3 class="heading-premium text-lg font-light text-white uppercase tracking-wide">Discovery & Planning</h3>
                     </div>
                     <p class="text-xs text-gray-400 font-light uppercase tracking-wider max-w-md md:text-right leading-relaxed">
-                        Establishing creative blueprints, high-end asset moodboards, lighting blueprints, and custom geometric frames.
+                        We discuss the objective, audience, location, timeline, and creative direction.
                     </p>
                 </div>
 
@@ -679,10 +514,10 @@
                     
                     <div class="flex items-center gap-6">
                         <span class="text-[10px] font-mono text-gray-600 group-hover/row:text-white transition-colors duration-300">_02</span>
-                        <h3 class="heading-premium text-lg font-light text-white uppercase tracking-wide">The Production Run</h3>
+                        <h3 class="heading-premium text-lg font-light text-white uppercase tracking-wide">Production</h3>
                     </div>
                     <p class="text-xs text-gray-400 font-light uppercase tracking-wider max-w-md md:text-right leading-relaxed">
-                        Executing photography layouts, cinematic film sequences, and audio arrays with high-end master optics.
+                        Photography, film, drone, sound, and on-location production.
                     </p>
                 </div>
 
@@ -692,10 +527,10 @@
                     
                     <div class="flex items-center gap-6">
                         <span class="text-[10px] font-mono text-gray-600 group-hover/row:text-white transition-colors duration-300">_03</span>
-                        <h3 class="heading-premium text-lg font-light text-white uppercase tracking-wide">Editorial Mastery</h3>
+                        <h3 class="heading-premium text-lg font-light text-white uppercase tracking-wide">Post-Production</h3>
                     </div>
                     <p class="text-xs text-gray-400 font-light uppercase tracking-wider max-w-md md:text-right leading-relaxed">
-                        Pixel-perfect skin retouching layouts, luxury color grading setups, custom sound design, and master sequencing tracking.
+                        Selection, retouching, editing, colour grading, sound, and finishing.
                     </p>
                 </div>
 
@@ -705,21 +540,14 @@
                     
                     <div class="flex items-center gap-6">
                         <span class="text-[10px] font-mono text-gray-600 group-hover/row:text-white transition-colors duration-300">_04</span>
-                        <h3 class="heading-premium text-lg font-light text-white uppercase tracking-wide">Pipeline Dispatch</h3>
+                        <h3 class="heading-premium text-lg font-light text-white uppercase tracking-wide">Delivery</h3>
                     </div>
                     <p class="text-xs text-gray-400 font-light uppercase tracking-wider max-w-md md:text-right leading-relaxed">
-                        Deploying optimized assets perfectly formatted for organic, high-retention cross-platform visibility pipelines.
+                        Final assets supplied in formats prepared for web, social, advertising, and print.
                     </p>
                 </div>
 
             </div>
-
-            <!-- Professional Structural Footer Data Panel -->
-            <div class="pt-6 border-t border-[#1F1F1F] flex items-center justify-between text-[10px] font-mono text-gray-500 uppercase tracking-widest">
-                <span>SYSTEM CONTROL MATRIX</span>
-                <span>EFFICIENCY STATUS // OPTIMAL</span>
-            </div>
-
         </div>
 
     </div>
@@ -734,8 +562,8 @@
         <!-- Section Header Index Control Block -->
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-[#121212] pb-8">
             <div class="space-y-3">
-                <span class="text-[11px] tracking-[0.35em] uppercase text-gray-500 block font-semibold">08 // Selected Manifestations</span>
-                <h2 id="portfolio-showcase-title" class="heading-premium text-3xl sm:text-4xl md:text-5xl font-light text-white uppercase tracking-[0.05em]">The Portfolio Archive</h2>
+                <span class="text-[11px] tracking-[0.35em] uppercase text-gray-500 block font-semibold">08 // Selected Projects</span>
+                <h2 id="portfolio-showcase-title" class="heading-premium text-3xl sm:text-4xl md:text-5xl font-light text-white uppercase tracking-[0.05em]" style="font-family: 'DM Serif Display', serif;">Selected Work</h2>
             </div>
             
             <!-- Category Filtering Interactive Strips (Vogue Style Minimalist Links) -->
@@ -834,19 +662,10 @@
             </div>
 
         </div>
-
-        <!-- Bottom Action Matrix Terminal Link -->
-        <!-- <div class="pt-12 text-center border-t border-[#121212]">
-            <a href="/portfolio/" class="inline-block text-[10px] uppercase tracking-[0.35em] border border-white text-white px-10 py-4 font-bold bg-transparent hover:bg-white hover:text-black transition-all duration-400 ease-in-out">
-                Enter Complete Creative Archives
-            </a>
-        </div> -->
-
     </div>
 </section>
 
 <!-- Testimonials Section -->
-<!--<section class="testimonials-section py-24 px-6 md:px-12 lg:px-24 bg-[#0A0A0A] text-[#FFFFFF] border-t border-[#121212]">-->
 <section class="testimonials-section py-12 md:py-16 px-6 md:px-12 lg:px-24 bg-[#0A0A0A] text-[#FFFFFF] border-t border-[#121212]">
     <div class="max-w-7xl mx-auto">
         
@@ -854,7 +673,7 @@
         <!--<div class="mb-20 text-center md:text-left">-->
         <div class="mb-10 md:mb-12 text-center md:text-left">
             <p class="text-xs uppercase tracking-[0.3em] text-[#F5F5F5] opacity-60 mb-3">Client Perspectives</p>
-            <h2 class="font-serif text-4xl md:text-6xl font-light tracking-tight">Words Beyond Frames.</h2>
+            <h2 class="text-4xl md:text-6xl font-light tracking-tight" style="font-family: 'DM Serif Display', serif;">Words Beyond Frames.</h2>
         </div>
 
         <!-- Testimonials Grid Layout -->
@@ -910,16 +729,12 @@
 </section>
 
 <!-- Premium Contact CTA Section with Cinematic Background Image -->
-<!--<section class="cta-section relative py-12 px-6 md:px-12 lg:px-24 bg-[#000000] text-[#FFFFFF] overflow-hidden border-t border-[#121212]">-->
     <!-- Line 1: Outer section wrapper -->
 <section class="cta-section relative py-12 md:py-16 px-6 md:px-12 lg:px-24 bg-[#000000] text-[#FFFFFF] overflow-hidden border-t border-[#121212]">
     
     <!-- 1. Background Image Layer with Luxury Dark Overlay -->
     <div class="absolute inset-0 z-0">
-        <!-- Replace the source path below with your premium monochrome/cinematic background image asset -->
         <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2070" alt="Studio Rishav Creative Space" class="w-full h-full object-cover object-center filter grayscale contrast-125 opacity-40">
-        <!-- <img src="{% static 'images/hero.jpg' %}" alt="Studio Rishav Creative Space" class="w-full h-full object-cover object-center filter grayscale contrast-125 opacity-40"> -->
-        <!-- Deep editorial cinematic overlay mask to ensure content readability -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#000000]/80 to-[#000000]"></div>
     </div>
     
@@ -937,7 +752,7 @@
         <p class="text-xs uppercase tracking-[0.4em] text-[#F5F5F5] opacity-50 mb-6">Next Chapter</p>
         
         <!-- Main Headline -->
-        <h2 class="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-none mb-6">
+        <h2 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-none mb-6" style="font-family: 'DM Serif Display', serif;">
             Ready to create<br class="hidden md:inline"> something extraordinary?
         </h2>
         
@@ -970,15 +785,13 @@
 </section>
 
 <!-- Premium Contact & Form Section -->
-<!--<section class="contact-section py-28 px-6 md:px-12 lg:px-24 bg-[#000000] text-[#FFFFFF] relative border-t border-[#121212]">-->
 <section class="contact-section py-12 md:py-16 px-6 md:px-12 lg:px-24 bg-[#000000] text-[#FFFFFF] relative border-t border-[#121212]">
     <div class="max-w-7xl mx-auto">
         
         <!-- Section Title -->
-        <!--<div class="mb-20">-->
         <div class="mb-10 md:mb-12">
             <p class="text-xs uppercase tracking-[0.4em] text-[#F5F5F5] opacity-50 mb-3">Initiate Connection</p>
-            <h2 class="font-serif text-4xl md:text-6xl font-light tracking-tight">Let's Create History.</h2>
+            <h2 class="text-4xl md:text-6xl font-light tracking-tight" style="font-family: 'DM Serif Display', serif;">Let's Create History.</h2>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
@@ -990,8 +803,8 @@
                     <!-- Email Module -->
                     <div class="group">
                         <p class="text-[10px] uppercase tracking-[0.3em] text-[#F5F5F5] opacity-40 mb-2">Email</p>
-                        <a href="mailto:foto.rishav@gmail.com" class="font-serif text-xl md:text-2xl font-light tracking-tight hover:opacity-70 transition-opacity block break-all">
-                            foto.rishav@gmail.com
+                        <a href="mailto:info@studiorishav.com" class="font-serif text-xl md:text-2xl font-light tracking-tight hover:opacity-70 transition-opacity block break-all">
+                            info@studiorishav.com
                         </a>
                     </div>
 
