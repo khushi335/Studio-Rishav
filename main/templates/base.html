@@ -62,6 +62,16 @@
                 overflow-y: auto;
             }
         }
+
+        /* Prevent image dragging and selection globally across the site */
+        img {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: auto; /* Keeps clicks working normally if needed, drag is disabled via script/CSS */
+        }
     </style>
 
     <script type="application/ld+json">
@@ -281,7 +291,7 @@
     </div>
 </footer>
 
-<!-- Robust Mobile Menu Toggle Handler Script -->
+<!-- Robust Mobile Menu Toggle & Image Protection Handler Script -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const menuBtn = document.getElementById('mobile-menu-btn');
@@ -314,7 +324,6 @@
         }
 
         if (menuBtn && mobileMenu) {
-            // Force hidden on initial load
             mobileMenu.classList.add('hidden');
 
             menuBtn.addEventListener('click', (e) => {
@@ -327,13 +336,29 @@
                 }
             });
 
-            // Automatically close the menu when any navigation link inside the menu is clicked
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     closeMenu();
                 });
             });
         }
+
+        // ==========================================
+        // IMAGE DOWNLOAD & RIGHT-CLICK PROTECTION
+        // ==========================================
+        // Disable right-click context menu globally on all images
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        // Disable dragging and saving via drag-and-drop
+        document.addEventListener('dragstart', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
     });
 </script>
     {% block extra_js %}{% endblock %}
