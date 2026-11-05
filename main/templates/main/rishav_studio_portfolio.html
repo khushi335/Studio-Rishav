@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Rishav Ojha — Photography, Cinematography & Visual Production{% endblock %}
-{% block meta_description %}Portfolio of Rishav Ojha — Photographer, Cinematographer, and Multidisciplinary Creative based in Sydney, Australia.{% endblock %}
+{% block title %}Rishav Ojha — Photography, Cinematography, Drone & Visual Production{% endblock %}
+{% block meta_description %}Portfolio of Rishav Ojha — Photographer, Cinematographer, Drone Pilot, and Multidisciplinary Creative based in Sydney, Australia.{% endblock %}
 
 {% block extra_head %}
 <!-- Google Fonts: Bodoni Moda (Luxury Serif) & Inter (Clean Sans Serif) -->
@@ -144,7 +144,6 @@
         font-size: 10px;
         text-transform: uppercase;
         letter-spacing: 0.2em;
-        color: var(--text-dark-muted);
         margin-bottom: 6px;
     }
 
@@ -191,7 +190,6 @@
     .brand-item {
         font-family: var(--font-serif);
         font-size: 20px;
-        color: var(--text-muted);
         letter-spacing: 0.05em;
         transition: color 0.3s ease;
     }
@@ -242,7 +240,6 @@
         font-size: 12px;
         text-transform: uppercase;
         letter-spacing: 0.15em;
-        color: var(--text-muted);
         padding: 10px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
@@ -284,6 +281,20 @@
         object-fit: cover;
         transition: transform 0.6s ease;
     }
+    
+.project-media-box {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.project-card-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
 
     .project-card-editorial:hover .project-media-box img {
         transform: scale(1.04);
@@ -317,13 +328,11 @@
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid var(--border-gray);
         border-radius: 999px;
-        color: var(--text-muted);
     }
 
     .project-desc {
         font-size: 14px;
         line-height: 1.8;
-        color: var(--text-muted);
         font-weight: 300;
         margin-bottom: 28px;
     }
@@ -372,7 +381,6 @@
         font-size: 12px;
         text-transform: uppercase;
         letter-spacing: 0.15em;
-        color: var(--text-muted);
         background-color: var(--bg-secondary);
         transition: all 0.3s ease;
     }
@@ -416,7 +424,6 @@
     .philosophy-text {
         font-size: 13px;
         line-height: 1.8;
-        color: var(--text-muted);
         font-weight: 300;
         margin: 0;
     }
@@ -473,26 +480,26 @@
     <section class="hero-wrapper">
         <div class="hero-grid">
             <div class="hero-img-box">
-                <img src="{% static 'images/portfolio/rishav_ojha.jpeg' %}" alt="Rishav Ojha">
+                <img src="{% static 'images/portfolio/Rishav_Photo.png' %}" alt="Rishav Ojha">
             </div>
             <div>
-                <span class="editorial-label">Sydney, Australia</span>
-                <h1 class="hero-title">Rishav Ojha</h1>
-                <div class="hero-tagline">Visual Stories That Connect Brands With People.</div>
-                <p class="hero-bio-text">
-                    I'm Rishav Ojha, a photographer, cinematographer, and multidisciplinary creative specialising in commercial photography, cinematic video production, and digital content. With extensive experience across photography, cinematography, editing, graphic design, and visual storytelling, I help businesses and brands transform ideas into polished visual content designed for digital, social, and commercial platforms.
+                <span class="editorial-label text-[#e5e5e5]">Sydney, Australia</span>
+                <h1 class="hero-title style="font-family: 'DM Serif Display', serif;">Rishav Ojha</h1>
+                <div class="hero-tagline text-[#e5e5e5]">Visual Stories That Connect Brands With People.</div>
+                <p class="hero-bio-text text-[#e5e5e5]">
+                    I'm Rishav Ojha, a photographer, cinematographer, drone pilot, and multidisciplinary creative specialising in commercial photography, cinematic video production, aerial cinematography, and digital content. With extensive experience across photography, cinematography, drone operations, editing, graphic design, and visual storytelling, I help businesses and brands transform ideas into polished visual content designed for digital, social, and commercial platforms.
                 </p>
                 <div class="hero-meta-bar">
                     <div class="meta-col">
-                        <div class="meta-label">Specialisation</div>
-                        <div class="meta-val">Photo & Video Production</div>
+                        <div class="meta-label text-[#e5e5e5]">Specialisation</div>
+                        <div class="meta-val">Photo, Video &amp; Drone</div>
                     </div>
                     <div class="meta-col">
-                        <div class="meta-label">Socials</div>
-                        <div class="meta-val">@fotoRishav | studio.Rishav</div>
+                        <div class="meta-label text-[#e5e5e5]">Socials</div>
+                        <div class="meta-val">@fotoRishav | info@studiorishav.com</div>
                     </div>
                     <div class="meta-col">
-                        <div class="meta-label">Portfolio Domain</div>
+                        <div class="meta-label text-[#e5e5e5]">Portfolio Domain</div>
                         <div class="meta-val">studiorishav.com</div>
                     </div>
                     <div class="meta-col">
@@ -505,7 +512,7 @@
 
     <!-- SELECTED BRANDS RIBBON -->
     <section class="brands-section">
-        <span class="editorial-label">Select Collaborations & Clients</span>
+        <span class="editorial-label hero-meta-bar text-[#e5e5e5]">Select Collaborations & Clients</span>
         <div class="brands-flex">
             <div class="brand-item">Being Human Clothing</div>
             <div class="brand-item">Malabar Gold & Diamonds</div>
@@ -518,10 +525,10 @@
 
     <!-- CAPABILITIES SECTION -->
     <section class="capabilities-section">
-        <span class="editorial-label">Capabilities</span>
-        <h2 class="editorial-heading">What I Do</h2>
+        <span class="editorial-label text-[#e5e5e5]">Capabilities</span>
+        <h2 class="editorial-heading  style="font-family: 'DM Serif Display', serif;">What I Do</h2>
 
-        <div class="capabilities-grid">
+        <div class="capabilities-grid" style="grid-template-columns: repeat(4, 1fr);">
             <div class="capability-card">
                 <h3 class="capability-card-title">Photography</h3>
                 <ul class="capability-list">
@@ -554,10 +561,11 @@
                 <h3 class="capability-card-title">Aerial / Drone</h3>
                 <ul class="capability-list">
                     <li>Cinematic Drone Photography</li>
-                    <li>Aerial Video</li>
+                    <li>Aerial Video Production</li>
                     <li>Location Establishing Shots</li>
-                    <li>Real Estate & Hospitality</li>
-                    <li>Travel & Lifestyle Visuals</li>
+                    <li>Real Estate &amp; Architecture</li>
+                    <li>Tourism &amp; Landscapes</li>
+                    <li>Event Aerial Coverage</li>
                 </ul>
             </div>
 
@@ -575,149 +583,153 @@
         </div>
     </section>
 
-    <!-- FEATURED PROJECTS SECTION -->
-    <section class="projects-section">
-        <span class="editorial-label">Portfolio</span>
-        <h2 class="editorial-heading">Featured Projects</h2>
+<!-- FEATURED PROJECTS SECTION -->
+<section class="projects-section">
+    <span class="editorial-label text-[#e5e5e5]">Portfolio</span>
+    <h2 class="editorial-heading" style="font-family: 'DM Serif Display', serif;">Featured Projects</h2>
 
-        <!-- Project 1 -->
-        <div class="project-card-editorial">
-            <div class="project-media-box">
-                <img src="{% static 'images/portfolio/being-human.jpg' %}" alt="Being Human Clothing Campaign">
+    <!-- Project 1: Drone & Aerial Showcase (Video Integration) -->
+    <div class="project-card-editorial">
+        <div class="project-media-box">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata">
+                <source src="{% static 'videos/portfolio/aerial-drone.mp4' %}" type="video/mp4">
+                <!--<source src="{% static 'videos/portfolio/aerial-drone.webm' %}" type="video/webm">-->
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div>
+            <div class="project-header-flex">
+                <h3 class="project-title">Aerial &amp; Drone Cinematography — NSW</h3>
+                <div class="project-tags">
+                    <span class="tag-badge">Drone Pilot</span>
+                    <span class="tag-badge">Aerial Cinema</span>
+                    <span class="tag-badge">Real Estate &amp; Tourism</span>
+                </div>
             </div>
-            <div>
-                <div class="project-header-flex">
-                    <h3 class="project-title">Being Human Clothing — Nepal</h3>
-                    <div class="project-tags">
-                        <span class="tag-badge">Photography</span>
-                        <span class="tag-badge">Cinematography</span>
-                        <span class="tag-badge">Graphic Design</span>
-                        <span class="tag-badge">Fashion Content</span>
-                    </div>
-                </div>
-                <p class="project-desc">
-                    Worked as a Photographer, Cinematographer, and Graphic Designer for Being Human Clothing, producing professional fashion photography, promotional videos, and creative marketing content for the brand's retail and digital presence in Nepal.
-                </p>
-                <div class="deliverables-title">Deliverables</div>
-                <div class="deliverables-grid">
-                    <div class="deliverable-tag">Fashion Campaign Photography</div>
-                    <div class="deliverable-tag">Model & Lifestyle Photography</div>
-                    <div class="deliverable-tag">Product Photography</div>
-                    <div class="deliverable-tag">Cinematic Promotional Videos</div>
-                    <div class="deliverable-tag">Social Media Content</div>
-                    <div class="deliverable-tag">Campaign Graphics</div>
-                </div>
+            <p class="project-desc">
+                Capturing breathtaking high-altitude perspectives and smooth low-altitude tracking shots for commercial developments, luxury residential projects, tourism campaigns, and large-scale outdoor events across New South Wales.
+            </p>
+            <div class="deliverables-title">Deliverables</div>
+            <div class="deliverables-grid">
+                <div class="deliverable-tag">4K Aerial Videography</div>
+                <div class="deliverable-tag">High-Resolution Drone Stills</div>
+                <div class="deliverable-tag">Establishing Property Shots</div>
+                <div class="deliverable-tag">Cinematic FPV Sweeps</div>
             </div>
         </div>
+    </div>
 
-        <!-- Project 2 -->
-        <div class="project-card-editorial">
-            <div class="project-media-box">
-                <img src="{% static 'images/portfolio/lappan-chappan.jpg' %}" alt="Lappan Chappan 2 Film Visuals">
+    <!-- Project 2 -->
+    <div class="project-card-editorial">
+        <div class="project-media-box">
+            <img src="{% static 'images/portfolio/human_beiing.jpg' %}" alt="Being Human Clothing Campaign">
+        </div>
+        <div>
+            <div class="project-header-flex">
+                <h3 class="project-title">Being Human Clothing — Nepal</h3>
+                <div class="project-tags">
+                    <span class="tag-badge">Photography</span>
+                    <span class="tag-badge">Cinematography</span>
+                    <span class="tag-badge">Graphic Design</span>
+                    <span class="tag-badge">Fashion Content</span>
+                </div>
             </div>
-            <div>
-                <div class="project-header-flex">
-                    <h3 class="project-title">Lappan Chappan 2 — Feature Film</h3>
-                    <div class="project-tags">
-                        <span class="tag-badge">Film Photography</span>
-                        <span class="tag-badge">Poster Design</span>
-                        <span class="tag-badge">Creative Production</span>
-                    </div>
-                </div>
-                <p class="project-desc">
-                    Media production in association with Mac Media. Contributed to the visual production and promotional identity of the feature film Lappan Chappan 2 as part of the creative production team.
-                </p>
-                <div class="deliverables-title">Role & Deliverables</div>
-                <div class="deliverables-grid">
-                    <div class="deliverable-tag">Film Photographer</div>
-                    <div class="deliverable-tag">Poster Photographer</div>
-                    <div class="deliverable-tag">Poster Designer</div>
-                    <div class="deliverable-tag">Promotional Media Production</div>
-                </div>
+            <p class="project-desc">
+                Worked as a Photographer, Cinematographer, and Graphic Designer for Being Human Clothing, producing professional fashion photography, promotional videos, and creative marketing content for the brand's retail and digital presence in Nepal.
+            </p>
+            <div class="deliverables-title">Deliverables</div>
+            <div class="deliverables-grid">
+                <div class="deliverable-tag">Fashion Campaign Photography</div>
+                <div class="deliverable-tag">Model &amp; Lifestyle Photography</div>
+                <div class="deliverable-tag">Product Photography</div>
+                <div class="deliverable-tag">Cinematic Promotional Videos</div>
+                <div class="deliverable-tag">Social Media Content</div>
+                <div class="deliverable-tag">Campaign Graphics</div>
             </div>
         </div>
+    </div>
 
-        <!-- Project 3 -->
-        <div class="project-card-editorial">
-            <div class="project-media-box">
-                <img src="{% static 'images/portfolio/malabar-gold.jpg' %}" alt="Malabar Gold & Diamonds Sydney">
-            </div>
-            <div>
-                <div class="project-header-flex">
-                    <h3 class="project-title">Malabar Gold & Diamonds — Sydney</h3>
-                    <div class="project-tags">
-                        <span class="tag-badge">Cinematography</span>
-                        <span class="tag-badge">Luxury Brand Content</span>
-                    </div>
-                </div>
-                <p class="project-desc">
-                    Worked as a Cinematographer for Malabar Gold & Diamonds, producing premium visual content focused on jewellery, luxury lifestyle, brand presentation, and promotional storytelling across showroom grand launches in Australia.
-                </p>
-                <div class="deliverables-title">Deliverables</div>
-                <div class="deliverables-grid">
-                    <div class="deliverable-tag">Cinematic Brand Content</div>
-                    <div class="deliverable-tag">Jewellery Video Production</div>
-                    <div class="deliverable-tag">Promotional Videos</div>
-                    <div class="deliverable-tag">Social Media Content</div>
+    <!-- Project 3 -->
+    <div class="project-card-editorial">
+        <div class="project-media-box">
+            <img src="{% static 'images/portfolio/lappan-chappan.jpg' %}" alt="Lappan Chappan 2 Film Visuals">
+        </div>
+        <div>
+            <div class="project-header-flex">
+                <h3 class="project-title">Lappan Chappan 2 — Feature Film</h3>
+                <div class="project-tags">
+                    <span class="tag-badge">Film Photography</span>
+                    <span class="tag-badge">Poster Design</span>
+                    <span class="tag-badge">Creative Production</span>
                 </div>
             </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="project-card-editorial">
-            <div class="project-media-box">
-                <img src="{% static 'images/portfolio/hospitality-campaigns.jpg' %}" alt="Hospitality Visuals Sydney">
-            </div>
-            <div>
-                <div class="project-header-flex">
-                    <h3 class="project-title">Hospitality Campaigns (Har Bar, Babli, Maicha)</h3>
-                    <div class="project-tags">
-                        <span class="tag-badge">Commercial</span>
-                        <span class="tag-badge">Food Photography</span>
-                        <span class="tag-badge">Design</span>
-                    </div>
-                </div>
-                <p class="project-desc">
-                    Produced food photography, atmosphere stills, cinematic promotional films, digital menu content, and campaign posters for Har Bar Indian Restaurant, Babli Indian Restaurant, and Maicha Nepalese Restaurant in Sydney.
-                </p>
-                <div class="deliverables-title">Deliverables</div>
-                <div class="deliverables-grid">
-                    <div class="deliverable-tag">Commercial Food Photography</div>
-                    <div class="deliverable-tag">Restaurant Promotional Films</div>
-                    <div class="deliverable-tag">Digital Menu Content</div>
-                    <div class="deliverable-tag">Campaign Posters</div>
-                </div>
+            <p class="project-desc">
+                Media production in association with Mac Media. Contributed to the visual production and promotional identity of the feature film Lappan Chappan 2 as part of the creative production team.
+            </p>
+            <div class="deliverables-title">Role &amp; Deliverables</div>
+            <div class="deliverables-grid">
+                <div class="deliverable-tag">Film Photographer</div>
+                <div class="deliverable-tag">Poster Photographer</div>
+                <div class="deliverable-tag">Poster Designer</div>
+                <div class="deliverable-tag">Promotional Media Production</div>
             </div>
         </div>
+    </div>
 
-    </section>
-
-    <!-- CONTENT FORMATS & AERIAL PERSPECTIVE -->
-    <section class="formats-section">
-        <span class="editorial-label">Cinematography & Social Content</span>
-        <h2 class="editorial-heading">Content Formats</h2>
-        <div class="editorial-cloud-grid">
-            <div class="cloud-box">Reels</div>
-            <div class="cloud-box">TikTok</div>
-            <div class="cloud-box">Campaign Films</div>
-            <div class="cloud-box">Brand Stories</div>
-            <div class="cloud-box">Events</div>
-            <div class="cloud-box">Commercials</div>
+    <!-- Project 4 -->
+    <div class="project-card-editorial">
+        <div class="project-media-box">
+            <img src="{% static 'images/portfolio/malabar-gold.jpg' %}" alt="Malabar Gold & Diamonds Sydney">
         </div>
-
-        <span class="editorial-label">Drone & Aerial Perspective</span>
-        <h2 class="editorial-heading">Aerial Suitable For</h2>
-        <div class="editorial-cloud-grid">
-            <div class="cloud-box">Tourism</div>
-            <div class="cloud-box">Hospitality</div>
-            <div class="cloud-box">Automotive</div>
-            <div class="cloud-box">Lifestyle</div>
-            <div class="cloud-box">Events</div>
-            <div class="cloud-box">Property</div>
-            <div class="cloud-box">Brand Films</div>
-            <div class="cloud-box">Social Campaigns</div>
+        <div>
+            <div class="project-header-flex">
+                <h3 class="project-title">Malabar Gold &amp; Diamonds — Sydney</h3>
+                <div class="project-tags">
+                    <span class="tag-badge">Cinematography</span>
+                    <span class="tag-badge">Luxury Brand Content</span>
+                </div>
+            </div>
+            <p class="project-desc">
+                Worked as a Cinematographer for Malabar Gold & Diamonds, producing premium visual content focused on jewellery, luxury lifestyle, brand presentation, and promotional storytelling across showroom grand launches in Australia.
+            </p>
+            <div class="deliverables-title">Deliverables</div>
+            <div class="deliverables-grid">
+                <div class="deliverable-tag">Cinematic Brand Content</div>
+                <div class="deliverable-tag">Jewellery Video Production</div>
+                <div class="deliverable-tag">Promotional Videos</div>
+                <div class="deliverable-tag">Social Media Content</div>
+            </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="project-card-editorial">
+        <div class="project-media-box">
+            <img src="{% static 'images/portfolio/hospitality-campaigns.jpg' %}" alt="Hospitality Visuals Sydney">
+        </div>
+        <div>
+            <div class="project-header-flex">
+                <h3 class="project-title">Hospitality Campaigns (Har Bar, Babli, Maicha)</h3>
+                <div class="project-tags">
+                    <span class="tag-badge">Commercial</span>
+                    <span class="tag-badge">Food Photography</span>
+                    <span class="tag-badge">Design</span>
+                </div>
+            </div>
+            <p class="project-desc">
+                Produced food photography, atmosphere stills, cinematic promotional films, digital menu content, and campaign posters for Har Bar Indian Restaurant, Babli Indian Restaurant, and Maicha Nepalese Restaurant in Sydney.
+            </p>
+            <div class="deliverables-title">Deliverables</div>
+            <div class="deliverables-grid">
+                <div class="deliverable-tag">Commercial Food Photography</div>
+                <div class="deliverable-tag">Restaurant Promotional Films</div>
+                <div class="deliverable-tag">Digital Menu Content</div>
+                <div class="deliverable-tag">Campaign Posters</div>
+            </div>
+        </div>
+    </div>
+
+</section>
 
     <!-- PHILOSOPHY / WHY WORK WITH ME -->
     <section class="philosophy-section">
